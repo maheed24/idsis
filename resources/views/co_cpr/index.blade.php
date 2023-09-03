@@ -231,6 +231,7 @@
                     }
                 }
             });
+
             $('#shiphistory').hide();
             $('#AddCert').hide();
             $('#btnAddCertPayment').hide();
@@ -333,193 +334,105 @@
         }
 
 
-//         function newRow(response) {
-//     let ship_propulsions = response.data['ship_propulsions'];
-//     let propulsionTableBody = document.getElementById('propulsionTableBody');
-
-//     // Clear the existing table rows
-//     propulsionTableBody.innerHTML = '';
-
-//     // Loop through ship_propulsions and populate the table
-//     ship_propulsions.forEach(function (ship_propulsion) {
-//         // Create the display row (visible by default)
-//         let displayRow = document.createElement('tr');
-
-//         // Create table cells for properties (excluding created_at)
-//         // Populate these cells with data from ship_propulsion
-//         // ...
-
-//         // Create the Edit button cell
-//         let editButtonCell = document.createElement('td');
-//         let editButton = document.createElement('button');
-//         editButton.textContent = 'Edit';
-//         // Add an event listener to the Edit button to toggle visibility of rows
-//         editButton.addEventListener('click', function () {
-//             displayRow.style.display = 'none'; // Hide the display row
-//             editRow.style.display = 'table-row'; // Show the edit row
-//             dataRow.style.display = 'table-row'; // Show the data row
-//         });
-//         editButtonCell.appendChild(editButton);
-
-//         // Append the cells to the display row
-//         displayRow.appendChild(/* cells */);
-//         displayRow.appendChild(editButtonCell);
-
-//         // Create the data row (visible by default)
-//         let dataRow = document.createElement('tr');
-
-//         // Create table cells for displaying data (same structure as displayRow)
-//         // Populate these cells with data from ship_propulsion
-//         // ...
-
-//         // Hide the data row initially
-//         dataRow.style.display = 'none';
-
-//         // Create the edit row (hidden by default)
-//         let editRow = document.createElement('tr');
-//         editRow.style.display = 'none'; // Hide the edit row initially
-
-//         // Create input fields and elements for the edit row
-//         // Populate these input fields with data from ship_propulsion
-//         // ...
-
-//         // Create the Save button cell
-//         let saveButtonCell = document.createElement('td');
-//         let saveButton = document.createElement('button');
-//         saveButton.textContent = 'Save';
-//         // Add an event listener to the Save button to save changes and toggle visibility of rows
-//         saveButton.addEventListener('click', function () {
-//             // Save changes logic here
-//             // ...
-
-//             // After saving, hide the edit row, data row, and show the display row again
-//             editRow.style.display = 'none';
-//             dataRow.style.display = 'none';
-//             displayRow.style.display = 'table-row';
-//         });
-//         saveButtonCell.appendChild(saveButton);
-
-//         // Append the input fields and elements to the edit row
-//         editRow.appendChild(/* input fields and elements */);
-//         editRow.appendChild(saveButtonCell);
-
-//         // Append both rows to the table body
-//         propulsionTableBody.appendChild(displayRow);
-//         propulsionTableBody.appendChild(dataRow);
-//         propulsionTableBody.appendChild(editRow);
-//     });
-// }
-
 
 
         function loadShipPropulsion(response) {
+    let ship_propulsions = response.data['ship_propulsions'];
+    let propulsionTableBody = document.getElementById('propulsionTableBody');
 
+    // Clear the existing table rows
+    propulsionTableBody.innerHTML = '';
 
-            let ship_propulsions = response.data['ship_propulsions'];
-            let propulsionTableBody = document.getElementById('propulsionTableBody');
+    // Loop through ship_propulsions and populate the table
+    ship_propulsions.forEach(function (ship_propulsion) {
+        let newRow = document.createElement('tr');
 
+        // Create table cells for properties (excluding created_at)
+        let cell1 = document.createElement('td');
+        cell1.textContent = ship_propulsion.engine_make;
 
-            // Clear the existing table rows
-            propulsionTableBody.innerHTML = '';
-            // Loop through ship_propulsions and populate the table
-            ship_propulsions.forEach(function(ship_propulsion) {
-                let newRow = document.createElement('tr');
+        let cell2 = document.createElement('td');
+        cell2.textContent = ship_propulsion.serial_no;
 
-                // Create table cells for properties (excluding created_at)
-                let cell1 = document.createElement('td');
-                cell1.textContent = ship_propulsion.engine_make;
+        let cell3 = document.createElement('td');
+        cell3.textContent = ship_propulsion.horsepower;
 
-                let cell2 = document.createElement('td');
-                cell2.textContent = ship_propulsion.serial_no;
+        let cell4 = document.createElement('td');
+        cell4.textContent = ship_propulsion.no_cyclinder;
 
-                let cell3 = document.createElement('td');
-                cell3.textContent = ship_propulsion.horsepower;
+        let cell5 = document.createElement('td');
+        cell5.textContent = ship_propulsion.no_cyclinder;
 
-                let cell4 = document.createElement('td');
-                cell4.textContent = ship_propulsion.no_cyclinder;
+        let cell6 = document.createElement('td');
+        cell6.textContent = ship_propulsion.status_id;
 
-                let cell5 = document.createElement('td');
-                cell5.textContent = ship_propulsion.no_cyclinder;
+        let cell7 = document.createElement('td');
 
-                let cell6 = document.createElement('td');
-                cell6.textContent = ship_propulsion.status_id;
-
-                let cell7 = document.createElement('td');
-
-
-
-
-
-
-
-                if (ship_propulsions.status_id === 1) {
-                    cell6.textContent = 'Active';
-                }
-                if (ship_propulsions.status_id === 2) {
-                    cell6.textContent = 'InActive';
-                }
-
-
-                /// create cell onject 
-                let cell8 = document.createElement('td');
-                let button = document.createElement('button');
-                button.id = 'button' + ship_propulsions.id; // Example: Unique ID for each button
-                //button.textContent = 'Click Me';
-
-                // Add style and class to the button
-                button.style.background = '#367fa9'; // Set background color
-                button.className = 'button btn btn-success btn-sm updateshippropulsion btn-flat'; // Add CSS classes
-
-                // Create an icon element
-                let icon = document.createElement('i');
-                icon.className = 'fa fa-edit'; // Add the icon's CSS class (Font Awesome icon used as an example)
-
-                // Attach the icon to the button
-                button.appendChild(icon);
-
-                // Attach a click event listener to the button with cert_type_id as a parameter
-                button.onclick = function(certType) {
-                    return function() {
-                        addEditRow();
-                    };
-                }(ship_propulsions.id); //
-                cell7.appendChild(button);
-
-
-
-
-                // Append the cells to the row
-                newRow.appendChild(cell1);
-                newRow.appendChild(cell2);
-                newRow.appendChild(cell3);
-                newRow.appendChild(cell4);
-                newRow.appendChild(cell5);
-                newRow.appendChild(cell6);
-                newRow.appendChild(cell7);
-                //newRow.appendChild(cell8);
-
-
-                // Append the row to the table body
-                propulsionTableBody.appendChild(newRow);
-                propulsionTableBody.appendChild(addEditRow(ship_propulsion));
-            });
-
-
-
+        if (ship_propulsion.status_id === 1) {
+            cell6.textContent = 'Active';
+        }
+        if (ship_propulsion.status_id === 2) {
+            cell6.textContent = 'InActive';
         }
 
+        let edittableRow = document.createElement('tr');
+        edittableRow.style.display = 'none';
 
-        // showing editable row for ship propulsion
-        function addEditRow(ship_propulsion) {
-    let newRow = document.createElement('tr');
+        // Create cell object
+        let cell8 = document.createElement('td');
+        let button = document.createElement('button');
+        button.id = 'button' + ship_propulsion.id; // Example: Unique ID for each button
 
+        // Add style and class to the button
+        button.style.background = '#367fa9'; // Set background color
+        button.className = 'button btn btn-success btn-sm updateshippropulsion btn-flat'; // Add CSS classes
+
+        // Create an icon element
+        let icon = document.createElement('i');
+        icon.className = 'fa fa-edit'; // Add the icon's CSS class (Font Awesome icon used as an example)
+
+        // Attach the icon to the button
+        button.appendChild(icon);
+
+        // Attach a click event listener to the button
+      // Attach a click event listener to the button
+button.onclick = function () {
+    // Toggle the display property of the hidden row between 'none' and an empty string to show/hide it
+    edittableRow.style.display = edittableRow.style.display === 'none' ? '' : 'none';
+};
+
+
+        cell7.appendChild(button);
+
+        // Append the cells to the row
+        newRow.appendChild(cell1);
+        newRow.appendChild(cell2);
+        newRow.appendChild(cell3);
+        newRow.appendChild(cell4);
+        newRow.appendChild(cell5);
+        newRow.appendChild(cell6);
+        newRow.appendChild(cell7);
+
+        // Append the row to the table body
+        propulsionTableBody.appendChild(newRow);
+        propulsionTableBody.appendChild(addEditRow(edittableRow, ship_propulsion));
+    });
+}
+
+// Function to create an editable row
+function addEditRow(newRow, ship_propulsion) {
     // Create input fields and elements for the new row
     let input1 = createInput('text', 'details_id', 'detail_id', 'width:100%!important;');
-input1.value = ship_propulsion.details_id; // Set default value
-input1.style.display = 'none'; // Hide the input element
-    
+    input1.value = ship_propulsion.details_id; // Set default value
+    input1.style.display = 'none'; // Hide the input element
+
+    let idinput = createInput('text', 'id', 'id', 'width:100%!important;');
+    idinput.value = ship_propulsion.id; // Set default value
+    idinput.style.display = 'none'; // Hide the input element
+
     let td1 = document.createElement('td');
     td1.appendChild(input1);
+    td1.appendChild(idinput);
 
     let input2 = createInput('text', 'engine_make', 'engine_make', 'width:100%!important;');
     input2.value = ship_propulsion.engine_make; // Set default value
@@ -553,9 +466,10 @@ input1.style.display = 'none'; // Hide the input element
     td7.appendChild(select);
 
     let td8 = document.createElement('td');
-let button = createButton('button', 'btn btn-primary btn-flat ', '', '<i class="fa fa-save"></i> Submit');
-button.addEventListener('click', function() {
-        let my_current_data ={
+    let button = createButton('button', 'btn btn-primary btn-flat ', '', '<i class="fa fa-save"></i> Submit');
+    button.addEventListener('click', function () {
+        let my_current_data = {
+            'id': idinput.value,
             'details_id': input1.value,
             'engine_make': input2.value,
             'horsepower': input3.value,
@@ -563,16 +477,13 @@ button.addEventListener('click', function() {
             'no_cyclinder': input5.value,
             'cycle': input6.value,
             'status_id': select.value,
-           
         };
 
-        alert(my_current_data.status_id);
+        updateShipPropulsion(newRow,my_current_data);
+    });
+    td8.appendChild(button);
 
-});
-td8.appendChild(button);
-
-let td9 = document.createElement('td');
-
+    let td9 = document.createElement('td');
 
     // Append the table cells to the new row
     newRow.appendChild(td1);
@@ -588,8 +499,22 @@ let td9 = document.createElement('td');
     return newRow;
 }
 
-
-
+// Function to update ship propulsion
+function updateShipPropulsion(edittableRow,data) {
+    $.ajax({
+        type: 'GET', // Change to POST
+        url: '/api/update-ship',
+        data: data, // Pass the data object directly
+        dataType: 'json',
+        success: function (response) {
+            window.location.reload();
+            edittableRow.style.display = edittableRow.style.display === 'none' ? '' : 'none';
+        },
+        error: function (err) {
+            $('#update_co_cpr_msg').html("<div class='alert alert-danger alert-dismissible'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button><b>" + err + '</b> </div>');
+        }
+    });
+}
 function createInput(type, name, id, style, min = null, step = null) {
     let input = document.createElement('input');
     input.type = type;

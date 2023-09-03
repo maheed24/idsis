@@ -420,25 +420,12 @@ $(function(){
 });
 
 //THIS FUNCTION USED TO DISPLAY EDIT MODAL
+
+
 $(function(){
 	$(document).on('click', '.updateshippropulsion', function(e){
 		
-		$(this).closest("tr").find("span.editSpan").show();
-		$(this).closest("tr").find("input.editInput").hide();
-		$(this).closest("tr").find("select.editSelect").hide();
-		$(this).closest("tr").find("button.editPropulsion").show();
 		
-		var ship_propulsion_id	 	= $(this).closest("tr").find("input.ship_propulsion_id").val();
-		//var ship_construction_id	= $(this).closest("tr").find("input.ship_construction_id").val();
-		var engine_make	 			= $(this).closest("tr").find("input.engine_make").val();
-		var serial_no 				= $(this).closest("tr").find("input.serial_no").val();
-		var horsepower 				= $(this).closest("tr").find("input.horsepower").val();
-		var no_cyclinder			= $(this).closest("tr").find("input.no_cyclinder").val();
-		var cycle 					= $(this).closest("tr").find("input.cycle").val();
-		var status_id 				= $(this).closest("tr").find("select#updateddlstatusidps").val();
-		var ship_name_id 			= $('#addddlshipnameidtrans').val();
-		var action 					= 'update';
-		let detail_id = $('#detail_id').val();
 		if(engine_make != '' && serial_no != '' && horsepower != ''  && no_cyclinder != ''  && cycle != '' && status_id != ''){
 			
 			let updated_data = {
@@ -455,29 +442,7 @@ $(function(){
 
 				
 			
-			$.ajax({
-				url:"/api/update-ship",
-				method:"GET",
-				
-				data:updated_data,
-				success:function(response){
-					console.log(response.data);
-					console.log('from backedn');
-					window.location.reload();
-
-					// if (data == 'error'){
-					// 	$('#update_co_cpr_msg').html(("<div class='alert alert-danger alert-dismissible'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button><b>Particulars of Propulsion System is already exist. </div>"));
-					// }
-					// else{
-					// 	getRowShipPropulsion(details_id);
-					// 	$("#propulsion").html(data);
-					// 	$('#update_co_cpr_msg').html(("<div class='alert alert-success alert-dismissible'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button><b>Particulars of Propulsion System has been successfully saved. </div>"));
-					// }
-				},
-				error: function(err) {
-					$('#update_co_cpr_msg').html(("<div class='alert alert-danger alert-dismissible'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button><b>" + err + "</b> </div>"));
-				}
-			});
+			
 			setInterval(function(){
 				$('#update_co_cpr_msg').html('').empty;
 			}, 5000);	

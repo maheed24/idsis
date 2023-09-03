@@ -97,28 +97,29 @@ Route::get('/create-ship', function(Request $request){
  })->name('ship.create');
 
  //SHIP PROPULSION EDIT
-Route::get('/update-ship', function(Request $request){
+ Route::get('/update-ship', function(Request $request) {
 
+     
+     
+     $ship_propulsion = Ship_propulsion::find((int)$request->input('id'));
+    
 
-    $ship_propulsion = Ship_propulsion::find($request['ship_propulsion_id']);
+    if (!$ship_propulsion) {
+        return response()->json(['error' => 'Ship propulsion not found'], 404);
+    }
 
     $ship_propulsion->update([
-        'engine_make'=> $request['engine_make'],
-        'serial_no'=> $request['serial_no'],
-        'horsepower'=> $request['horsepower'],
-        'no_cyclinder'=> $request['no_cyclinder'],
-        'cycle'=> $request['cycle'],
-        'status_id'=> (int)$request['status_id'],
-    
+        'engine_make' => $request->input('engine_make'),
+        'serial_no' => $request->input('serial_no'),
+        'horsepower' => $request->input('horsepower'),
+        'no_cyclinder' => $request->input('no_cyclinder'),
+        'cycle' => $request->input('cycle'),
+        'status_id' => (int) $request->input('status_id'),
     ]);
-    
 
-    // // return response()->json(['data' => $newShipPropulsion, 'message' => 'success']);
-    
-    return response()->json(['data'=> $ship_propulsion] );
+    return response()->json(['data' => $ship_propulsion]);
+})->name('ship.update');
 
-
- })->name('ship.update');
 
 /// CHANGE HOMEPORT 
 
@@ -141,7 +142,7 @@ Route::get('/change-homeport', function(Request $request){
 // HISTORY/CERTIFICATE EDIT
 Route::get('/update-cert', function(Request $request){
   
-   
+    // return response()->json(['data'=> $request->all()]);
     $certificate = Certificate_license::find($request['cert_id']);
     $certificate->update([
         'or_no'=> (int)$request['or_no'],
