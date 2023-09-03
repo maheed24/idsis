@@ -1,0 +1,1 @@
+<img src="{{asset('img/profile.jpg')}}" alt="" style="width:60px;">

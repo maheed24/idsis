@@ -1,0 +1,34 @@
+@media screen {
+    #printSection {
+        display: none;
+    }
+	#header {
+		display:none;
+	}
+}
+@media print {
+    body * {
+        visibility:hidden;
+    }
+    #printSection, #printSection * {
+        visibility:visible;
+    }
+    #printSection {
+        position:absolute;
+        left:0;
+        top:0;
+    }
+	#header { 
+		display: block !important; 
+	}
+	#tblOfficeAsset td {
+        border: 1px solid black !important;
+        border-width: 1px 1px 1px 1px !important;
+    }
+	#tblOfficeAsset th {
+        border: 1px solid black !important;
+        border-width: 1px 1px 1px 1px !important;
+		text-align:center!important;
+               
+    }
+}

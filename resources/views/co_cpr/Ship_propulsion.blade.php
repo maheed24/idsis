@@ -1,0 +1,13 @@
+<tr id = "{{$Ship_propulsion[0]->id}}">
+    @foreach($Ship_propulsion as $item)
+    <td style="display:none;">{{$item->id}}<input type="text" class="form-control editInput ship_propulsion_id" name="ship_propulsion_id" id="updatetxtshippropulsionid" style="width:100%!important;" value="{{$item->id}}" /></td>
+    <td style="width:14%;"><span class = "editSpan engine_make">{{$item->engine_make}}</span><input type="text" class="form-control editInput engine_make" name="engine_make" id="updatetxtenginemakeps" style="width:100%!important;display:none;" value="{{$item->engine_make}}" /></td>
+    <td style="width:14%;"><span class = "editSpan horsepower">{{$item->horsepower}}</span><input type="number" class="form-control editInput horsepower" step=".01" min="0" name="horsepower" id="updatetxthorsepowerps" style="width:100%!important;display:none;" value="{{$item->horsepower}}" /></td>
+    <td style="width:14%;"><span class = "editSpan serial_no">{{$item->serial_no}}</span><input type="text" class="form-control editInput serial_no" name="serial_no" id="updatetxtserialnops" style="width:100%!important;display:none;" value="{{$item->serial_no}}"/></td>
+    <td style="width:14%;"><span class = "editSpan no_cyclinder">{{$item->no_cyclinder}}</span><input type="number" class="form-control editInput no_cyclinder" name="no_cyclinder" id="updatetxtnocyclinderps" style="width:100%!important;display:none;" value="{{$item->no_cyclinder}}" /></td>
+<td style="width:14%;"><span class = "editSpan cycle">{{$item->cycle}}</span><input type="number" class="form-control editInput cycle" name="cycle" id="txtcycle_ps_edit" style="width:100%!important;display:none;" value="{{$item->cycle}}"/></td>
+    <td style="width:14%;"><span class = "editSpan status_desc">{{$item->status->status_desc}}</span><select class="form-control editSelect status_id" name="status_id" id="updateddlstatusidps" style="width:100%!important;display:none;"><option value="1">ACTIVE</option><option value="2">INACTIVE</option></select></td>
+    <td style="width:2%;" class="hide_btn"><button type="button" style="background:#367fa9;" class="button btn btn-success btn-sm editshippropulsion btn-flat"><i class="fa fa-edit" style="width:10px;"></i></button><button type="button" style="background:#367fa9;display:none;" class="button btn btn-success btn-sm updateshippropulsion btn-flat" data-id="'.$row['ship_propulsion_id'].'"><i class="fa fa-save" style="width:10px;"></i></button></td>
+    
+    @endforeach
+</tr>

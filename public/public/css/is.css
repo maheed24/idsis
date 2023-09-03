@@ -1,0 +1,40 @@
+.inline-label { 
+    white-space: nowrap;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    float:left;     
+    }
+body {
+	font-family: arial;
+	font-size:12px;
+}
+.form-horizontal .control-label {
+    padding-top: 7px!important;
+    margin-bottom: 0!important;
+    text-align: left!important;
+	margin-left:15px!important;
+	width:120px!important;
+}
+@media (min-width: 800px)
+.modal-dialog {
+    width:800px!important;
+}
+@media screen {
+    #printSection {
+        display: none;
+    }
+}
+@media print {
+    body * {
+        visibility:hidden;
+    }
+    #printSection, #printSection * {
+        visibility:visible;
+    }
+    #printSection {
+        position:absolute;
+        left:0;
+        top:0;
+    }
+}
