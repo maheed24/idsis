@@ -148,7 +148,8 @@ class PDFCertController extends Controller
             $file = 'certificate/certificate-10Tonnage';
         }
         if ($certificate_type == 11) {
-            $file = 'certificate/certificate-11Minimun';
+            //$file = 'certificate/certificate-11Minimun';
+            return redirect('co_cpr');
         }
         $pdf = Pdf::loadView($file, compact('Details'), [
             'certificate' => $certificate,

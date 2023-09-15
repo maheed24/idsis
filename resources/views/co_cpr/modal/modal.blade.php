@@ -729,7 +729,7 @@
             
             {!! csrf_field() !!}
             
-                <input type="text" class="form-control" name="details_id" id="detail_id" style="background:#cecece;font-size: 12;width:100%!important;"  />
+                <input type="hidden" class="form-control" name="details_id" id="detail_id" style="background:#cecece;font-size: 0;width:100%!important;"  />
             <td style="width:14%;"><input type="text" class="form-control" name="engine_make" id="sengine_make" style="width:100%!important;" /></td>
             <td style="width:14%;"><input type="number" class="form-control" step=".01" min="0" name="horsepower" id="shorsepower" style="width:100%!important;" /></td>
             <td style="width:14%;"><input type="text" class="form-control" name="serial_no" id="sserial_no" style="width:100%!important;" /></td>
