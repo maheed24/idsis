@@ -77,7 +77,7 @@ Route::get('/edit-certificate', function(Request $request){
 Route::get('/create-ship', function(Request $request){
 
 
-    
+    //  return response()->json(['data'=>$request->all()]);
     $new_ship_propulsion = Ship_propulsion::create([
         'engine_make'=> $request['engine_make'],
         'serial_no'=> $request['serial_no'],
@@ -85,8 +85,9 @@ Route::get('/create-ship', function(Request $request){
         'no_cyclinder'=> $request['no_cyclinder'],
         'cycle'=> $request['cycle'],
         'status_id'=> (int)$request['status_id'],
-        'details_id'=> (int)$request['detail_id'],
+        'details_id'=> (int)$request['details_id'],
     ]);
+    return response()->json(['data'=>$new_ship_propulsion]);
     
 
     // return response()->json(['data' => $newShipPropulsion, 'message' => 'success']);

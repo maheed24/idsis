@@ -1,3 +1,4 @@
+<title>{{ $certificate->cert_type[0]->cert_type_desc }}</title>
 <style>
     body {
         margin-top: 150px;
@@ -51,6 +52,7 @@
         line-height: 25px;
         font-size: 15px;
     }
+
     .p3 {
         font-family: Arial, Helvetica, sans-serif;
         letter-spacing: .5px;
@@ -59,8 +61,8 @@
 </style>
 
 <body>
-    <h3 class="header">BAY AND RIVER LICENSE</h3>
-    <p class="p1" style='text-align: center'>License No.:</p>
+    <h3 class="header">{{ $certificate->cert_type[0]->cert_type_desc }}</h3>
+    <p class="p1" style='text-align: center'>License No.:{{ $license_no }}</p>
 
 
     <p class="p2" style='text-align: justify'>
@@ -74,11 +76,10 @@
 
         <tr>
             <td style="width:50%">Name of Ship <br>
-                <center> <b class="value">ML
-                        "M/L LOVER BOY"</b></center>
+                <center> <b class="value">{{ $Details[0]->ship_name }}</b></center>
             </td>
             <td style="width:50%;">Former Name of Vessel<br>
-                <center><b class="value">bagundang</b></center>
+                <center><b class="value">{{ $Details[0]->former_ship_name }}</b></center>
             </td>
 
         </tr>
@@ -86,19 +87,19 @@
     <table>
         <tr>
             <td style="width:25%;">Official No
-                <center><b class="value">BARMMRGL22-000048</b></center>
+                <center><b class="value">{{ $Details[0]->official_no }}</b></center>
             </td>
 
             <td style="width:25%;">Type of Ship
-                <center><b class="value">PASSENGER</b></center>
+                <center><b class="value">{{ $ship_classification[0]->ship_classification_desc }}</b></center>
             </td>
             </td>
             <td style="width:25%;">Place of Registry <br>
-                <center><b class="value">TBA</b></center>
+                <center><b class="value">{{ $office_place }}</b></center>
             </td>
             </td>
             <td style="width:25%;">Homeport <br>
-                <center><b class="value">TBA</b></center>
+                <center><b class="value">{{ $Details[0]->homeport }}</b></center>
             </td>
             </td>
 
@@ -108,26 +109,26 @@
     <table>
         <tr>
             <td style="width:50%;">Gross Tonnage<br>
-                <center><b class="value">123</b></center>
+                <center><b class="value">{{ $Details[0]->gross_tonnage }}</b></center>
             </td>
             <td style="width:25%;">Net Tonnage<br>
-                <center><b class="value">123</b></center>
+                <center><b class="value">{{ $Details[0]->net_tonnage }}</b></center>
             </td>
             <td style="width:25%;">Hull Material<br>
-                <b class="value">&nbsp;&nbsp;WOOD</b>
+                <center><b class="value">{{ $hull_material[0]->hull_material_desc }}</b></center>
             </td>
         </tr>
     </table>
     <table>
         <tr>
             <td style="width:50%;">Length (Meter) <br>
-                <center><b class="value">123</b></center>
+                <center><b class="value">{{ $Details[0]->length }}</b></center>
             </td>
             <td style="width:25%;">Breadth (Meter)<br>
-                <center><b class="value">123</b></center>
+                <center><b class="value">{{ $Details[0]->breadth }}</b></center>
             </td>
             <td style="width:25%;">Depth (Meter)<br>
-                <center><b class="value">12.3</b></center>
+                <center><b class="value">{{ $Details[0]->depth }}</b></center>
             </td>
         </tr>
     </table>
@@ -137,39 +138,39 @@
     <table>
         <tr>
             <td>Company Name<br>
-                <center> <b class="value">NORODIN P. UGOKAN
+                <center> <b class="value">{{ $Details[0]->company_name }}
                     </b></center>
             </td>
         </tr>
         <tr>
             <td>Business Address<br>
-                <center> <b class="value">BARMM
+                <center> <b class="value">{{ $Details[0]->business_address }}
                     </b></center>
             </td>
         </tr>
     </table>
     <p class="p2" style='text-align: justify'>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The above mentioned ship is hereby
-        licensed and permitted to engage bay and river
+        licensed and permitted to engage coastwise
         trading for a period of one year, provided that the other certificates/authorities of the ships are
         valid and subsisting according to the provisions of the law and the regulations applicable
         thereto.
     </p>
     <p class="p2" style='text-align: justify'>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This License is valid from 17th
-        November 2022 to 16th November 2023.
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This License is valid from
+        {{ $date_issued }} to {{$date_validity}}.
     </p>
-    <p class="p2" style='text-align: center'>
-        Issued at TBA on this 17th day of November 2022
+    <p class="p2" style='text-align: justify'>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Issued at {{$office_place}} on this {{$date_issued}}.
     </p>
     <p class="p2" style='text-align: right'>
         By the Authority of the Administrator:
     </p>
     <br><br><br>
     <p class="p3" style='text-align: left'>
-        Paid: 480.00 <br>
-        O.R. Number: 123456 <br>
-        Date: 17th November 2022
+        Paid: {{ $amount }} <br>
+        O.R. Number: {{$or_number}} <br>
+        Date: {{$or_date}}
     </p>
-   
+
 </body>

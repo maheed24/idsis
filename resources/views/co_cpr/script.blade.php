@@ -317,16 +317,16 @@ $(function(){
 $(function(){
 	$(document).on('click', '.btnAddPropulsion1', function(e){
 		let detail_id = $('#detail_id').val();
-		let engine_make = $('#engine_make').val();
-		let horsepower = $('#horsepower').val();
-		let serial_no = $('#serial_no').val();
-		let no_cyclinder = $('#no_cyclinder').val();
-		let cycle = $('#cycle').val();
-		let status_id = $('#status_id').val();
+		let engine_make = $('#sengine_make').val();
+		let horsepower = $('#shorsepower').val();
+		let serial_no = $('#sserial_no').val();
+		let no_cyclinder = $('#sno_cyclinder').val();
+		let cycle = $('#scycle').val();
+		let status_id = $('#sstatus_id').val();
 
 		
 		let mydata = {
-			detail_id: detail_id,
+			details_id: detail_id,
 			engine_make: engine_make,
 			horsepower: horsepower,
 			serial_no: serial_no,
@@ -334,6 +334,8 @@ $(function(){
 			cycle: cycle,
 			status_id:status_id,
 		} 
+	
+	
 		
 
 		

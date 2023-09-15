@@ -40,7 +40,7 @@ class CO_CPRController extends Controller
             ->where('homeport', [$Office_place])->get();
         // $Detail_id = Detail::find($request['1']);  
        
-        $Detail_id = $Detail[0]->id;
+       // $Detail_id = $Detail[0]->id;
         //dd($Detail_id);
 
         $Trading_area = Trading_area::all();
@@ -50,7 +50,7 @@ class CO_CPRController extends Controller
         $Stern_type = Stern_type::all();
         $Ship_type = Ship_type::all();
         $Ship_classification = Ship_classification::all();
-        $Ship_propulsion = Ship_propulsion::whereIn('details_id', [$Detail_id])->get();
+        // $Ship_propulsion = Ship_propulsion::whereIn('details_id', [$Detail_id])->get();
         //dd($Ship_propulsion);
         $Rig_type = Rig_type::all();
         $Operation = Operation::all();
@@ -60,12 +60,12 @@ class CO_CPRController extends Controller
         $Homeport = Office::whereNot('id', [$Office_id])->get();
         // $certificates = Certificate_license::where('details_id', $Detail_id)->get();
         // dd($certificates);
-        $Certificate =  DB::table('certificate_licenses')
-            ->where('details_id', $Detail_id)
-            ->join('cert_types', 'certificate_licenses.cert_type_id', '=', 'cert_types.id')
-            ->select('cert_types.cert_type_desc as desc', DB::raw('cert_id as cert_id, DATE_FORMAT(date_issued, "%D %M %Y") as issued ,sec_no as sec 
-                        ,date_issued as issuance,  cert_no as certificate_no, details_id as details, DATE_FORMAT(validity, "%D %M %Y") as date_validity, or_no as orno, DATE_FORMAT(or_date, "%D %M %Y") as ordate'))
-            ->get();
+        // $Certificate =  DB::table('certificate_licenses')
+        //     ->where('details_id', $Detail_id)
+        //     ->join('cert_types', 'certificate_licenses.cert_type_id', '=', 'cert_types.id')
+        //     ->select('cert_types.cert_type_desc as desc', DB::raw('cert_id as cert_id, DATE_FORMAT(date_issued, "%D %M %Y") as issued ,sec_no as sec 
+        //                 ,date_issued as issuance,  cert_no as certificate_no, details_id as details, DATE_FORMAT(validity, "%D %M %Y") as date_validity, or_no as orno, DATE_FORMAT(or_date, "%D %M %Y") as ordate'))
+        //     ->get();
         // dd($Certificate);
         $Acquisition_type = Acquisition_type::all();
         $Status = Status::all();
@@ -79,13 +79,13 @@ class CO_CPRController extends Controller
                     ->with('Hull_material', $Hull_material)
                     ->with('Stem_type', $Stem_type)
                     ->with('Stern_type', $Stern_type)
-                    ->with('Ship_propulsion', $Ship_propulsion)
+                    //->with('Ship_propulsion', $Ship_propulsion)
                     ->with('Ship_classification', $Ship_classification)
                     ->with('Rig_type', $Rig_type)
                     ->with('Operation', $Operation)
                     ->with('Acquisition_type', $Acquisition_type)
                     ->with('Cert_type', $Cert_type)
-                    ->with('Certificate', $Certificate)
+                    //->with('Certificate', $Certificate)
                     ->with('Status', $Status);
     }
 

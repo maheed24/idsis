@@ -105,7 +105,7 @@
                                         <div class="col-sm-3">
                                             <div class="form-group" style="padding-left:20px!important;">
                                                 <label>Ship Classification<span style="color:red;">*</span></label>
-                                                <select class="form-control select2" name="ship_classification_id" id="addddlshipclassificationdetailsid" style="width:100%;">
+                                                <select class="form-control select2" name="ship_classification_id" id="addddlshipclassificationdetailsid" style="width:100%;" required>
                                                     <option value="" selected="selected" disabled>PLEASE SELECT</option>
                                                     @foreach($Ship_classification as $item)
                                                     <option value="{{$item->id}}">{{$item->ship_classification_desc}}</option>
@@ -116,7 +116,7 @@
                                         <div class="col-sm-3">
                                             <div class="form-group" style="padding-left:20px!important;">
                                                 <label>Ship Type<span style="color:red;">*</span></label>
-                                                <select class="form-control select2" name="ship_type_id" id="addddlshiptypedetailsid" style="width:100%;">
+                                                <select class="form-control select2" name="ship_type_id" id="addddlshiptypedetailsid" style="width:100%;" required>
                                                     <option value="" selected="selected" disabled>PLEASE SELECT</option>
                                                     @foreach($Ship_type as $item)
                                                     <option value="{{$item->id}}">{{$item->ship_type_desc}}</option>
@@ -249,7 +249,7 @@
                                         <div class="col-sm-3 vessel">
                                             <div class="form-group" style="padding-left:20px!important;padding-right:20px!important;">
                                                 <label>No of Decks<span style="color:red;">*</span></label>
-                                                <input type="text" class="form-control clear" name="no_decks" id="addtxtnodecks" style="width:100%!important;" />
+                                                <input type="text" class="form-control clear" name="no_decks" id="addtxtnodecks" style="width:100%!important;" required />
                                             </div>
                                         </div>
                                         <div class="col-sm-3">
@@ -393,7 +393,7 @@
                                 <form id="editForm" action="/co_cpr" class="form-horizontal" method="POST"  style="margin-top:10px;!important">
                                     {!! csrf_field() !!}
                                     @method("PATCH")
-                                    <input type="text" class="form-control clear" name="id" id="id" style="width:100%!important;" required />
+                                    <input type="hidden" class="form-control clear" name="id" id="id" style="width:100%!important;" required />
                                     {{-- <input type="hidden" class="form-control clear" name="action" value="update" style="width:100%!important;" required /> --}}
                                     <div id="update_co_cpr_msg"></div>
                                     <div class="row">
@@ -725,17 +725,17 @@
         @endforeach --}}
     </tbody>
     <tfoot id="footershippropulsion">
-        {{-- {!! csrf_field() !!} --}}
         <tr>
             
+            {!! csrf_field() !!}
             
-                <input type="text" class="form-control" name="details_id" id="detail_id" style="background:#cecece;font-size: 0;width:100%!important;"  />
-            <td style="width:14%;"><input type="text" class="form-control" name="engine_make" id="engine_make" style="width:100%!important;" /></td>
-            <td style="width:14%;"><input type="number" class="form-control" step=".01" min="0" name="horsepower" id="horsepower" style="width:100%!important;" /></td>
-            <td style="width:14%;"><input type="text" class="form-control" name="serial_no" id="serial_no" style="width:100%!important;" /></td>
-            <td style="width:14%;"><input type="number" class="form-control" name="no_cyclinder" id="no_cyclinder" style="width:100%!important;" /></td>
-            <td style="width:14%;"><input type="number" class="form-control" name="cycle" id="cycle" style="width:100%!important;" /></td>
-            <td style="width:14%;"><select class="form-control" name="status_id" id="status_id" style="width:100%!important;"><option value="1">ACTIVE</option><option value="2">INACTIVE</option></select></td>
+                <input type="text" class="form-control" name="details_id" id="detail_id" style="background:#cecece;font-size: 12;width:100%!important;"  />
+            <td style="width:14%;"><input type="text" class="form-control" name="engine_make" id="sengine_make" style="width:100%!important;" /></td>
+            <td style="width:14%;"><input type="number" class="form-control" step=".01" min="0" name="horsepower" id="shorsepower" style="width:100%!important;" /></td>
+            <td style="width:14%;"><input type="text" class="form-control" name="serial_no" id="sserial_no" style="width:100%!important;" /></td>
+            <td style="width:14%;"><input type="number" class="form-control" name="no_cyclinder" id="sno_cyclinder" style="width:100%!important;" /></td>
+            <td style="width:14%;"><input type="number" class="form-control" name="cycle" id="scycle" style="width:100%!important;" /></td>
+            <td style="width:14%;"><select class="form-control" name="status_id" id="sstatus_id" style="width:100%!important;"><option value="1">ACTIVE</option><option value="2">INACTIVE</option></select></td>
             <td style="width:2%;">
                 <button type="submit" class="btn btn-primary btn-flat btnAddPropulsion1" id="btnAddPropulsion1">
                     <i class="fa fa-save"></i> Submit
@@ -756,9 +756,9 @@
                                 {{-- ADD History --}}
                                 <div id="AddCert" style="margin-top:10px;!important;display:none;">	
                                     {!! csrf_field() !!}
-                                    <input type="text" class="form-control" name="details_id" id="id" style="background:#cecece;font-size: 10;width:100%!important;"  required />
+                                    <input type="hidden" class="form-control" name="details_id" id="details_id" style="background:#cecece;font-size: 10;width:100%!important;"  required />
                                     {{-- <input type="hidden" class="form-control clear" name="action" value="add" style="width:100%!important;" readonly /> --}}
-                                    <input type="hidden" class="form-control clear" name="details_id" id="addtxtdetailsidpayment" style="width:100%!important;" required />
+                                    {{-- <input type="text" class="form-control clear" name="details_id" id="addtxtdetailsidpayment" style="width:100%!important;" required /> --}}
                                     <div id="payment_msg"></div>
                                     <div class="row">
                                         <div class="col-sm-4">
@@ -825,8 +825,8 @@
                                     
                                     {!! csrf_field() !!}
                                     {{-- <input type="hidden" class="form-control clear" name="action" value="update" style="width:100%!important;" required /> --}}
-                                    <input type="text" class="form-control clear" name="cert_id" id="cert_id1" style="width:100%!important;" required />
-                                    <input type="text" class="form-control clear" name="details_id" id="details_id1" style="width:100%!important;" required />
+                                    <input type="hidden" class="form-control clear" name="cert_id" id="cert_id1" style="width:100%!important;" required />
+                                    <input type="hidden" class="form-control clear" name="details_id" id="details_id1" style="width:100%!important;" required />
                                     <div id="update_payment_msg"></div>
                                     <div class="row">
                                         <div class="col-sm-4">

@@ -84,7 +84,7 @@ Route::get('/show', [Ship_propulsionController::class, 'index']);
 
 // Route::get('/change_home', [ChangeHomeportController::class,'update']);
 
-Route::get('generate-pdf', [PDFCertController::class,'generatePdf'])->name('generate-pdf');
+Route::get('/generate-pdf/{id}', [PDFCertController::class,'generatePdf'])->name('generate-pdf');
 // Route::post('/post',[CaptchaController::class]);
 });
 Route::middleware([
