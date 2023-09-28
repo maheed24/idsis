@@ -174,6 +174,6 @@ class PDFCertController extends Controller
             'valid_date' => $valid_date,
             'date_validity' => $date_validity,
         ])->setPaper('legal');
-        return $pdf->stream();
+        return $pdf->download();
     }
 }

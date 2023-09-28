@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('city_municipalities', function (Blueprint $table) {
             $table->id();
             $table->string('city_municipality_desc');
-            $table->foreignId('province_id');
+            $table->foreignId('province_id')->nullable();
             $table->foreignId('status_id');
             $table->timestamps();
         });

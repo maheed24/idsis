@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('ship_propulsions', function (Blueprint $table) {
             $table->id();
-            $table->string('engine_make');
-            $table->string('serial_no');
-            $table->string('horsepower');
-            $table->string('no_cyclinder');
-            $table->string('cycle');
+            $table->string('engine_make')->nullable();
+            $table->string('serial_no')->nullable();
+            $table->string('horsepower')->nullable();
+            $table->string('no_cyclinder')->nullable();
+            $table->string('cycle')->nullable();
             $table->foreignId('status_id');
             $table->foreignId('details_id');
             // $table->string('model');

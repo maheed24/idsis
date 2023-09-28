@@ -2050,7 +2050,7 @@ $(function () {
 	$('.select2').select2()
 });
 
-$('#city_municipality_desc, #addtxtcitymunicipalitydesc, #province_desc, #addtxtprovincedesc, #addtxtoperationdesc, #operation_desc, #addtxtrigtypedesc, #rig_type_desc, #updatextusertypedesc, #addtxtusertypedesc, #office_desc, #office_abbr, #office_place, #addtxtofficedesc, #addtxtofficeabbr, #addtxtofficeplace, #addtxttradingareadesc, #stern_type_desc, #addtxtsterntypedesc, #addtxtstemtypedesc, #stem_type_desc, #addtxtshiptypedesc, #ship_type_desc, #addtxtshipclassificationdesc, #ship_classification_desc, #addtxthullmaterialdesc, #hullmaterial_desc, #cert_type_abbr, #certificate_type_desc, #addtxtstatusdesc, #status_desc, #addtxtcertificatetypedesc, #addtxtcertificatetypeabbr, #cert_type_desc').keyup(function(){
+$('#txtlastname','#addtxtfirstname','#addtxtmiddleinitial','#addtxtsuffix','#city_municipality_desc, #addtxtcitymunicipalitydesc, #province_desc, #addtxtprovincedesc, #addtxtoperationdesc, #operation_desc, #addtxtrigtypedesc, #rig_type_desc, #updatextusertypedesc, #addtxtusertypedesc, #office_desc, #office_abbr, #office_place, #addtxtofficedesc, #addtxtofficeabbr, #addtxtofficeplace, #addtxttradingareadesc, #stern_type_desc, #addtxtsterntypedesc, #addtxtstemtypedesc, #stem_type_desc, #addtxtshiptypedesc, #ship_type_desc, #addtxtshipclassificationdesc, #ship_classification_desc, #addtxthullmaterialdesc, #hullmaterial_desc, #cert_type_abbr, #certificate_type_desc, #addtxtstatusdesc, #status_desc, #addtxtcertificatetypedesc, #addtxtcertificatetypeabbr, #cert_type_desc').keyup(function(){
   $(this).val($(this).val().toUpperCase());
 });
 </script>
