@@ -16,8 +16,7 @@
                         <div class="box-header with-border">
                             <h4><b>LIST OF CHANGE HOMEPORT</b></h4>
                             <div class="box-tools pull-right">
-                                <a href="#mdlAddCOCPR" data-toggle="modal" class="btn btn-primary btn-sm btn-flat clear_txt"
-                                    style="margin-top:8px!important;"> NEW VESSEL</a>
+    
                             </div>
                         </div>
                         <div class="box-body">
@@ -66,6 +65,18 @@
         <!-- ./wrapper -->
         @include('co_cpr.script')
     </body>
+    @if (session()->has('flash_message'))
+    <script>
+        // Display a Toastr notification
+        toastr.success("{{ session('flash_message') }}");
+    </script>
+@endif
+@if (session()->has('update_message'))
+    <script>
+        // Display an "info" Toastr notification
+        toastr.info("{{ session('update_message') }}");
+    </script>
+@endif
     <script>
         $(document).ready(function() {
             fetchtblChangeHomeport();
@@ -88,7 +99,7 @@
         $('#tblChangeHomeport').DataTable({
             responsive: true,
             "bLengthChange": false,
-            "iDisplayLength": 3,
+            "iDisplayLength": 5,
             "language": {
                 "emptyTable": "THERE IS NO AVAILABLE DATA FOR CHANGE IN HOMEPORT IN THE DATABASE"
             },

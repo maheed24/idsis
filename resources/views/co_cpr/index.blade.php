@@ -66,6 +66,28 @@
         <!-- ./wrapper -->
         @include('co_cpr.script')
     </body>
+    @if (session()->has('flash_message'))
+        <script>
+            // Display a Toastr notification
+            toastr.success("{{ session('flash_message') }}");
+        </script>
+    @endif
+    @if(session()->has('update_message'))
+    <script>
+        // Display an "info" Toastr notification
+        toastr.info("{{ session('update_message') }}");
+    </script>
+@endif
+    <script>
+        $(document).ready(function() {
+            // Configure Toastr options (adjust as needed)
+            toastr.options = {
+                closeButton: true, // Show a close button
+                progressBar: true, // Show a progress bar
+                timeOut: 5000, // Time in milliseconds to automatically close the message (5 seconds in this example)
+            };
+        });
+    </script>
     <script>
         //CERTIFICATE GET
         // $(document).on('click', '.editPayment', function(e) {
@@ -294,10 +316,11 @@
 
                 // Set the link's href attribute using the Laravel route function
                 let routeUrl =
-                "{{ route('generate-pdf', ['id' => 'cert_id']) }}"; // Replace 'your.route.name' with your actual route name
+                    "{{ route('generate-pdf', ['id' => 'cert_id']) }}"; // Replace 'your.route.name' with your actual route name
 
-                routeUrl = routeUrl.replace('cert_id', certificate_license.cert_id); // Replace 'cert_id' with the actual parameter name
-                
+                routeUrl = routeUrl.replace('cert_id', certificate_license
+                .cert_id); // Replace 'cert_id' with the actual parameter name
+
 
                 link1.setAttribute('href', routeUrl); // Set the href attribute
 
@@ -600,7 +623,7 @@
         $('#tblCOCPR').DataTable({
             responsive: true,
             "bLengthChange": false,
-            "iDisplayLength": 3,
+            "iDisplayLength": 5,
             "language": {
                 "emptyTable": "THERE IS NO AVAILABLE DATA FOR TYPE OF CERTIFICATE IN THE DATABASE"
             },

@@ -33,7 +33,7 @@ class HullMaterialsController extends Controller
     {
         $input = $request->all();
         Hull_material::create($input);
-        return redirect('Hull_material')->with('flash_message', 'Hull_material Addedd!');
+        return redirect('Hull_material')->with('add_message', 'DATA ADDED!');
     }
 
     /**
@@ -59,7 +59,7 @@ class HullMaterialsController extends Controller
     {
         $Hull_material = Hull_material::find($id);
         $Hull_material->update($request->all());
-        return redirect('Hull_material');
+        return redirect('Hull_material')->with('update_message', ' DATA UPDATED!');
     }
 
     /**

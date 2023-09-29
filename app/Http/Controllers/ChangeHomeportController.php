@@ -68,7 +68,7 @@ class ChangeHomeportController extends Controller
       
         $change_home = Detail::find($id);
         $change_home->update($request->all());
-        return redirect('change_homeport');
+        return redirect('change_homeport')->with('flash_message', ' VESSEL ACCEPTED!');
     }
 
     /**

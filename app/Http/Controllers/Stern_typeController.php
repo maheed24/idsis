@@ -19,13 +19,13 @@ class Stern_typeController extends Controller
     {
         $input = $request->all();
         Stern_type::create($input);
-        return redirect('Stern_type')->with('flash_message', 'Stern_type Addedd!');
+        return redirect('Stern_type')->with('flash_message', 'STERN TYPE ADDED!');
     }
 
     public function update(Request $request, string $id)
     {
         $Stern_type = Stern_type::find($id);
         $Stern_type->update($request->all());
-        return redirect('Stern_type');
+        return redirect('Stern_type')->with('update_message', ' DATA UPDATED!');
     }
 }

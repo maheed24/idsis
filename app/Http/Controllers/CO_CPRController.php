@@ -33,15 +33,21 @@ class CO_CPRController extends Controller
         $Office_id = $User_auth->office->id;
         $Office_place = $User_auth->office->office_place;
         $User_id = $User_auth->id;
+        $User_type = $User_auth->user_type_id;
+     
+       if($User_type==3){
+        $Detail = Detail::whereIn('change_homeport', ['0'])->get();
+       }
+       else{
 
-       
+           $Detail = Detail::whereIn('change_homeport', ['0'])
+               ->where('homeport', [$Office_place])->get();
+       }
         //dd($Office_place);
-        $Detail = Detail::whereIn('change_homeport', ['0'])
-            ->where('homeport', [$Office_place])->get();
         // $Detail_id = Detail::find($request['1']);  
        
        // $Detail_id = $Detail[0]->id;
-        //dd($Detail_id);
+        //dd($Detail);
 
         $Trading_area = Trading_area::all();
         $Hull_material = Hull_material::all();
@@ -70,23 +76,23 @@ class CO_CPRController extends Controller
         $Acquisition_type = Acquisition_type::all();
         $Status = Status::all();
         return view('co_cpr.index')->with('Detail', $Detail)
-                    ->with('User', $User)
-                    ->with('Office', $Office)
-                    ->with('Office_all', $Office_all)
-                    ->with('Homeport', $Homeport)
-                    ->with('Ship_type', $Ship_type)
-                    ->with('Trading_area', $Trading_area)
-                    ->with('Hull_material', $Hull_material)
-                    ->with('Stem_type', $Stem_type)
-                    ->with('Stern_type', $Stern_type)
-                    //->with('Ship_propulsion', $Ship_propulsion)
-                    ->with('Ship_classification', $Ship_classification)
-                    ->with('Rig_type', $Rig_type)
-                    ->with('Operation', $Operation)
-                    ->with('Acquisition_type', $Acquisition_type)
-                    ->with('Cert_type', $Cert_type)
-                    //->with('Certificate', $Certificate)
-                    ->with('Status', $Status);
+                                    ->with('User', $User)
+                                    ->with('Office', $Office)
+                                    ->with('Office_all', $Office_all)
+                                    ->with('Homeport', $Homeport)
+                                    ->with('Ship_type', $Ship_type)
+                                    ->with('Trading_area', $Trading_area)
+                                    ->with('Hull_material', $Hull_material)
+                                    ->with('Stem_type', $Stem_type)
+                                    ->with('Stern_type', $Stern_type)
+                                    //->with('Ship_propulsion', $Ship_propulsion)
+                                    ->with('Ship_classification', $Ship_classification)
+                                    ->with('Rig_type', $Rig_type)
+                                    ->with('Operation', $Operation)
+                                    ->with('Acquisition_type', $Acquisition_type)
+                                    ->with('Cert_type', $Cert_type)
+                                    //->with('Certificate', $Certificate)
+                                    ->with('Status', $Status);
     }
 
     /**
@@ -109,7 +115,7 @@ class CO_CPRController extends Controller
     {
         $input = $request->all();
         Detail::create($input);
-        return redirect('co_cpr')->with('flash_message', 'DATA ADD!');
+        return redirect('co_cpr')->with('flash_message', 'NEW VESSEL I HAVE BEEN ADDED');
     }
 
 
@@ -162,7 +168,7 @@ class CO_CPRController extends Controller
     {
         $Detail = Detail::find($id);
         $Detail->update($request->all());
-        return redirect('co_cpr');
+        return redirect('co_cpr')->with('update_message', 'VESSEL HAVE BEED UPDATED');
     }
 
     /**

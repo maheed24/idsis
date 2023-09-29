@@ -33,7 +33,7 @@ class Ship_typeController extends Controller
     {
         $input = $request->all();
         Ship_type::create($input);
-        return redirect('Ship_type')->with('flash_message', 'Ship_type Addedd!');
+        return redirect('Ship_type')->with('flash_message', 'SHIP TYPE ADDED!');
     }
 
     /**
@@ -59,7 +59,7 @@ class Ship_typeController extends Controller
     {
         $Ship_type = Ship_type::find($id);
         $Ship_type->update($request->all());
-        return redirect('Ship_type');
+        return redirect('Ship_type')->with('update_message', ' DATA UPDATED!');
     }
 
     /**

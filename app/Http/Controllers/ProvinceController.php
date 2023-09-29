@@ -29,7 +29,7 @@ class ProvinceController extends Controller
     {
         $input = $request->all();
         Province::create($input);
-        return redirect('Province')->with('flash_message', 'Province Addedd!');
+        return redirect('Province')->with('flash_message', 'PROVINCE ADDED!');
     }
 
     public function edit($id)
@@ -55,7 +55,7 @@ class ProvinceController extends Controller
     {
         $Province = Province::find($id);
         $Province->update($request->all());
-        return redirect('Province');
+        return redirect('Province')->with('update_message', 'DATA ADDED!');
     }
     
      

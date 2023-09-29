@@ -19,13 +19,13 @@ class UsertypeController extends Controller
     {
         $input = $request->all();
         User_type::create($input);
-        return redirect('User_type')->with('flash_message', 'User_type Addedd!');
+        return redirect('User_type')->with('flash_message', 'USER TYPE ADDED!');
     }
 
     public function update(Request $request, string $id)
     {
         $User_type = User_type::find($id);
         $User_type->update($request->all());
-        return redirect('User_type');
+        return redirect('User_type')->with('update_message', ' USER TYPE UPDATED!');
 }
 }

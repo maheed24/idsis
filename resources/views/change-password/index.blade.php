@@ -75,6 +75,12 @@
 	<!-- ./wrapper -->
      @include('script')
 </body>
+@if (session()->has('flash_message'))
+<script>
+    // Display a Toastr notification
+    toastr.danger("{{ session('flash_message') }}");
+</script>
+@endif
 
 <script>
 	$(document).ready(function() {

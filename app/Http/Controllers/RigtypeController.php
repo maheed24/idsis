@@ -19,13 +19,13 @@ class RigtypeController extends Controller
     {
         $input = $request->all();
         Rig_type::create($input);
-        return redirect('Rig_type')->with('flash_message', 'Rig_type Addedd!');
+        return redirect('Rig_type')->with('flash_message', 'RIG TYPE ADDED!');
     }
     public function update(Request $request, string $id)
     {
         $Rig_type = Rig_type::find($id);
         $Rig_type->update($request->all());
-        return redirect('Rig_type');
+        return redirect('Rig_type')->with('update_message', ' DATA UPDATED!');
     }
 
 }

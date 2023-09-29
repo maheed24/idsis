@@ -19,13 +19,13 @@ class Stem_typeController extends Controller
     {
         $input = $request->all();
         Stem_type::create($input);
-        return redirect('Stem_type')->with('flash_message', 'Stem_type Addedd!');
+        return redirect('Stem_type')->with('flash_message', 'STEM TYPE ADDED!');
     }
 
     public function update(Request $request, string $id)
     {
         $Stem_type = Stem_type::find($id);
         $Stem_type->update($request->all());
-        return redirect('Stem_type');
+        return redirect('Stem_type')->with('update_message', ' DATA UPDATED!');
     }
 }

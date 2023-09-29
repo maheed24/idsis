@@ -73,7 +73,7 @@ Route::middleware([
         $user = User::find((int)$id);
         $user->password = Hash::make($request->password);
         $user->save();
-        return redirect('User');
+        return redirect('User')->with('reset_message', 'PASSWORD HAVE BEEN RESET!');
     })->name('user-reset');
     Route::resource('/User', UserController::class)->middleware(['can:super-admin']);
 
@@ -84,7 +84,7 @@ Route::middleware([
     Route::get('/edit-city/{id}', [CityMunicipalityController::class, 'edit']);
     Route::resource('/Rig_type', RigtypeController::class)->middleware('can:super-admin');
     Route::resource('/Operation', OperationController::class)->middleware('can:super-admin');
-    Route::resource('/co_cpr', CO_CPRController::class)->middleware('can:user');
+    Route::resource('/co_cpr', CO_CPRController::class);
     Route::resource('/change_homeport', ChangeHomeportController::class)->middleware('can:user');
     // Route::get('/edit-detail/{id}', [CO_CPRController::class, 'edit']);
     Route::resource('/profiles', ProfileController::class)->middleware('can:user');
@@ -116,9 +116,6 @@ Route::middleware([
     })->name('update-password-yow');
     Route::resource('/change-password', ResetController::class)->middleware('can:user');
 
-    // Route::get('/change-password', [ChangePasswordController::class, 'showChangePasswordForm']);
-    // Route::post('/change-password', [ChangePasswordController::class, 'changePassword']);
-    
 
     Route::get('/edit-certificate/{id}', [CertificateController::class, 'edit']);
     Route::get('/add-cert', [CO_CPRController::class, 'add']);

@@ -38,7 +38,7 @@ class Ship_classification_typeController extends Controller
     {
         $input = $request->all();
         Ship_classification_type::create($input);
-        return redirect('Ship_classification_type')->with('flash_message', 'Ship_classification_type Addedd!');
+        return redirect('Ship_classification_type')->with('flash_message', 'SHIP CLASSIFICATION ADDED!');
     }
 
     /**
@@ -80,7 +80,7 @@ class Ship_classification_typeController extends Controller
     {
         $Ship_classification_type = Ship_classification_type::find($id);
         $Ship_classification_type->update($request->all());
-        return redirect('Ship_classification_type');
+        return redirect('Ship_classification_type')->with('update_message', ' DATA UPDATED!');
     }
 
     /**

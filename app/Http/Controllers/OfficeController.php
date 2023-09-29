@@ -33,7 +33,7 @@ class OfficeController extends Controller
     {
         $input = $request->all();
         Office::create($input);
-        return redirect('Office')->with('flash_message', 'Office Addedd!');
+        return redirect('Office')->with('flash_message', 'OFFICE ADDED');
     }
 
     /**
@@ -59,7 +59,7 @@ class OfficeController extends Controller
     {
         $Office = Office::find($id);
         $Office->update($request->all());
-        return redirect('Office');
+        return redirect('Office')->with('update_message', ' DATA UPDATED!');
     }
 
     /**

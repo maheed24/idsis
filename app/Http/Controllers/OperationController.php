@@ -19,12 +19,12 @@ class OperationController extends Controller
     {
         $input = $request->all();
         Operation::create($input);
-        return redirect('Operation')->with('flash_message', 'Operation Addedd!');
+        return redirect('Operation')->with('flash_message', 'OPERATION ADDED!');
     }
     public function update(Request $request, string $id)
     {
         $Operation = Operation::find($id);
         $Operation->update($request->all());
-        return redirect('Operation');
+        return redirect('Operation')->with('update_message', ' DATA UPDATED!');
     }
 }

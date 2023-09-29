@@ -31,7 +31,7 @@ class StatusController extends Controller
     {
         $input = $request->all();
         Status::create($input);
-        return redirect('Status')->with('flash_message', 'Status Addedd!');
+        return redirect('Status')->with('flash_message', 'STATUS ADDED!');
     }
 
     /**
@@ -57,7 +57,7 @@ class StatusController extends Controller
     {
         $Status = Status::find($id);
         $Status->update($request->all());
-        return redirect('Status');
+        return redirect('Status')->with('update_message', ' DATA UPDATED!');
     }
 
     /**

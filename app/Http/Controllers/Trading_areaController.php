@@ -19,13 +19,13 @@ class Trading_areaController extends Controller
     {
         $input = $request->all();
         Trading_area::create($input);
-        return redirect('Trading_area')->with('flash_message', 'Trading_area Addedd!');
+        return redirect('Trading_area')->with('flash_message', 'TRADING AREA ADDED!');
     }
 
     public function update(Request $request, string $id)
     {
         $Trading_area = Trading_area::find($id);
         $Trading_area->update($request->all());
-        return redirect('Trading_area');
+        return redirect('Trading_area')->with('update_message', ' DATA UPDATED!');
     }
 }

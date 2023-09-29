@@ -66,7 +66,7 @@ class UserController extends Controller
         $user->office_id = $request->input('office_id');
         $user->status_id = 1;
         $user->save();
-        return redirect('User')->with('flash_message', ' Added!');
+        return redirect('User')->with('flash_message', 'NEW USER ADDED');
     }
 
     /**
@@ -115,7 +115,7 @@ class UserController extends Controller
     {
         $User = User::find($id);
         $User->update($request->all());
-        return redirect('User');
+        return redirect('User')->with('update_message', 'USER UPDATED SUCCESSFULLY');
     }
 
     

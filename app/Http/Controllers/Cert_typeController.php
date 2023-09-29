@@ -35,7 +35,7 @@ class Cert_typeController extends Controller
     {
         $input = $request->all();
         Cert_type::create($input);
-        return redirect('Cert_type')->with('flash_message', 'Cert_type Addedd!');
+        return redirect('Cert_type')->with('add_message', 'DATA ADDED!');
     }
 
     /**
@@ -75,7 +75,7 @@ class Cert_typeController extends Controller
 
         $Cert_type->update();
        
-        return redirect('Cert_type')->with('flash_message', ' Added!');
+        return redirect('Cert_type')->with('update_message', ' DATA UPDATED!');
     }
 
     /**
