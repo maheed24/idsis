@@ -273,14 +273,16 @@
     </p>
 
     <p class="p2" style='text-align: right'>
-        By the Authority of the Administrator: <br><br>
-        <b> ATTY. ABUBAKAR A. KATAMBAK</b>
+        <br>
+         <b>ATTY. ABUBAKAR A. KATAMBAK</b> <br>
+               Regional Head &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </p>
 
     <p class="p3" style='text-align: left'>
         Paid: {{ $amount }} <br>
         O.R. Number: {{$or_number}} <br>
-        Date: {{$or_date}}
+        Date: {{$or_date}}<br><br>
+        <img src="{{ $qrCodeImagePath }}" alt="QR Code">
     </p>
 
 </body>

@@ -7,18 +7,19 @@ use App\Models\Detail;
 use App\Models\Office;
 use App\Models\Status;
 use App\Models\Rig_type;
+use App\Models\Cert_type;
 use App\Models\Operation;
 use App\Models\Ship_type;
 use App\Models\Stem_type;
 use App\Models\Stern_type;
+use Illuminate\Support\Str;
 use App\Models\Trading_area;
 use Illuminate\Http\Request;
 use App\Models\Hull_material;
 use App\Models\Ship_propulsion;
 use App\Models\Acquisition_type;
-use App\Models\Cert_type;
-use App\Models\Certificate_license;
 use Illuminate\Support\Facades\DB;
+use App\Models\Certificate_license;
 use App\Models\Ship_classification;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,19 +35,18 @@ class CO_CPRController extends Controller
         $Office_place = $User_auth->office->office_place;
         $User_id = $User_auth->id;
         $User_type = $User_auth->user_type_id;
-     
-       if($User_type==3){
-        $Detail = Detail::whereIn('change_homeport', ['0'])->get();
-       }
-       else{
 
-           $Detail = Detail::whereIn('change_homeport', ['0'])
-               ->where('homeport', [$Office_place])->get();
-       }
+        if ($User_type == 3) {
+            $Detail = Detail::whereIn('change_homeport', ['0'])->get();
+        } else {
+
+            $Detail = Detail::whereIn('change_homeport', ['0'])
+                ->where('homeport', [$Office_place])->get();
+        }
         //dd($Office_place);
         // $Detail_id = Detail::find($request['1']);  
-       
-       // $Detail_id = $Detail[0]->id;
+
+        // $Detail_id = $Detail[0]->id;
         //dd($Detail);
 
         $Trading_area = Trading_area::all();
@@ -76,23 +76,23 @@ class CO_CPRController extends Controller
         $Acquisition_type = Acquisition_type::all();
         $Status = Status::all();
         return view('co_cpr.index')->with('Detail', $Detail)
-                                    ->with('User', $User)
-                                    ->with('Office', $Office)
-                                    ->with('Office_all', $Office_all)
-                                    ->with('Homeport', $Homeport)
-                                    ->with('Ship_type', $Ship_type)
-                                    ->with('Trading_area', $Trading_area)
-                                    ->with('Hull_material', $Hull_material)
-                                    ->with('Stem_type', $Stem_type)
-                                    ->with('Stern_type', $Stern_type)
-                                    //->with('Ship_propulsion', $Ship_propulsion)
-                                    ->with('Ship_classification', $Ship_classification)
-                                    ->with('Rig_type', $Rig_type)
-                                    ->with('Operation', $Operation)
-                                    ->with('Acquisition_type', $Acquisition_type)
-                                    ->with('Cert_type', $Cert_type)
-                                    //->with('Certificate', $Certificate)
-                                    ->with('Status', $Status);
+            ->with('User', $User)
+            ->with('Office', $Office)
+            ->with('Office_all', $Office_all)
+            ->with('Homeport', $Homeport)
+            ->with('Ship_type', $Ship_type)
+            ->with('Trading_area', $Trading_area)
+            ->with('Hull_material', $Hull_material)
+            ->with('Stem_type', $Stem_type)
+            ->with('Stern_type', $Stern_type)
+            //->with('Ship_propulsion', $Ship_propulsion)
+            ->with('Ship_classification', $Ship_classification)
+            ->with('Rig_type', $Rig_type)
+            ->with('Operation', $Operation)
+            ->with('Acquisition_type', $Acquisition_type)
+            ->with('Cert_type', $Cert_type)
+            //->with('Certificate', $Certificate)
+            ->with('Status', $Status);
     }
 
     /**
@@ -113,7 +113,14 @@ class CO_CPRController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'ship_name' => 'required|unique:details', // Replace 'column_name' with the actual column name.
+            // Add more validation rules as needed for other fields.
+        ], [
+            'ship_name.unique' => 'The Vessel already existing'
+        ]);
         $input = $request->all();
+        //$input['token'] = Str::random(10);
         Detail::create($input);
         return redirect('co_cpr')->with('flash_message', 'NEW VESSEL I HAVE BEEN ADDED');
     }
@@ -122,9 +129,10 @@ class CO_CPRController extends Controller
     /**
      * Display the specified resource.
      */
-    public function shows(string $id)
+    public function show(string $id)
     {
-        //
+        $Detail = Detail::find($id);
+        return view('co_cpr.show')->with('Detail', $Detail);
     }
 
     /**

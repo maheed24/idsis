@@ -1,9 +1,11 @@
 <?php
 
 use App\Models\Detail;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Ship_propulsion;
 use App\Models\Certificate_license;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -145,6 +147,7 @@ Route::get('/update-cert', function(Request $request){
   
     // return response()->json(['data'=> $request->all()]);
     $certificate = Certificate_license::find($request['cert_id']);
+   
     $certificate->update([
         'or_no'=> (int)$request['or_no'],
         'or_date'=> $request['or_date'],
@@ -170,7 +173,7 @@ Route::get('/update-cert', function(Request $request){
 // HISTORY/CERTIFICATE ADD
 
  Route::get('/create-cert', function(Request $request){
-
+   
     $new_certificate = Certificate_license::create([
         'or_no'=> (int)$request['or_no'],
         'or_date'=> $request['or_date'],
@@ -178,6 +181,7 @@ Route::get('/update-cert', function(Request $request){
         'sec_no'=> $request['sec_no'],
         'cert_type_id'=> $request['cert_type_id'],
         'amount'=> (int)$request['amount'],
+        'qr_code'=> Str::random(10),
         'date_issued'=> $request['date_issued'],
         'validity'=> $request['validity'],
         'details_id'=> (int)$request['details_id'],

@@ -78,6 +78,12 @@
         toastr.info("{{ session('update_message') }}");
     </script>
 @endif
+@if ($errors->any())
+    <script>
+        // Display a Toastr notification for validation errors
+        toastr.error("{{ $errors->first() }}");
+    </script>
+@endif
     <script>
         $(document).ready(function() {
             // Configure Toastr options (adjust as needed)
@@ -213,6 +219,48 @@
                 }
                 if (certificate_license.cert_type_id === 11) {
                     cell1.textContent = 'MINIMUM SAFE MANNING CERTIFICATE';
+                }
+                if (certificate_license.cert_type_id === 12) {
+                    cell1.textContent = 'CERTIFICATE OF CHANGE VESSEL ENGINE';
+                }
+                if (certificate_license.cert_type_id === 13) {
+                    cell1.textContent = 'CERTIFICATE OF CHANGE OF NAME OF VESSEL';
+                }
+                if (certificate_license.cert_type_id === 14) {
+                    cell1.textContent = 'CERTIFICATE OF INSPECTION';
+                }
+                if (certificate_license.cert_type_id === 15) {
+                    cell1.textContent = 'CERTIFICATE OF PUBLIC CONVENIENCE';
+                }
+                if (certificate_license.cert_type_id === 16) {
+                    cell1.textContent = 'CERTIFICATE OF STABILITY';
+                }
+                if (certificate_license.cert_type_id === 17) {
+                    cell1.textContent = 'CERTIFICATION ROLL BACK';
+                }
+                if (certificate_license.cert_type_id === 18) {
+                    cell1.textContent = 'CHANGE OF HOMEPORT';
+                }
+                if (certificate_license.cert_type_id === 19) {
+                    cell1.textContent = 'COMPLIANCE';
+                }
+                if (certificate_license.cert_type_id === 20) {
+                    cell1.textContent = 'CERTIFICATE OF PUBLIC CONVENIENCE';
+                }
+                if (certificate_license.cert_type_id === 21) {
+                    cell1.textContent = 'FVSC_BACK';
+                }
+                if (certificate_license.cert_type_id === 22) {
+                    cell1.textContent = 'MOTORBOAT OPERATOR LICENSE';
+                }
+                if (certificate_license.cert_type_id === 23) {
+                    cell1.textContent = 'ORDER';
+                }
+                if (certificate_license.cert_type_id === 24) {
+                    cell1.textContent = 'PASSENGER';
+                }
+                if (certificate_license.cert_type_id === 25) {
+                    cell1.textContent = 'PLEASURE YACHT LICENSED';
                 }
                 let cell2 = document.createElement('td');
                 cell2.textContent = certificate_license.cert_no;

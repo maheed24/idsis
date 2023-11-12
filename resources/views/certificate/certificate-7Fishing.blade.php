@@ -2,7 +2,7 @@
 <style>
     body {
         margin-top: 150px;
-        margin-bottom: 100px;
+        margin-bottom: 5px;
         margin-right: 25px;
         margin-left: 25px;
     }
@@ -173,5 +173,7 @@
         <b>ATTY. ABUBAKAR A. KATAMBAK</b> <br>
                Regional Head &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </p>
-
+    <br><br>
+    <p style='text-align: bottom'>
+    <img src="{{ $qrCodeImagePath }}" alt="QR Code"></p>
 </body>

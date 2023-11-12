@@ -57,18 +57,7 @@
 	<!-- ./wrapper -->
      @include('script')
 </body>
-@if (session()->has('flash_message'))
-<script>
-	// Display a Toastr notification
-	toastr.success("{{ session('flash_message') }}");
-</script>
-@endif
-@if (session()->has('update_message'))
-<script>
-	// Display an "info" Toastr notification
-	toastr.info("{{ session('update_message') }}");
-</script>
-@endif
+
 <script>
   
   $(document).on('click','.editbtn',function(){

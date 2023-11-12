@@ -40,10 +40,21 @@
 <!-- Include Toastr JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
+@if (session()->has('flash_message'))
+<script>
+	// Display a Toastr notification
+	toastr.success("{{ session('flash_message') }}");
+</script>
+@endif
+@if (session()->has('update_message'))
+<script>
+	// Display an "info" Toastr notification
+	toastr.info("{{ session('update_message') }}");
+</script>
+@endif
 <script>
 
 //******************************************* STATUS SCRIPT ********************************************//
-
 //STATUS TABLE
 function fetchtblStatus(){
 	$.ajax({

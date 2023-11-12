@@ -10,25 +10,62 @@ use App\Models\Ship_type;
 use App\Models\Signatory;
 use App\Models\Stem_type;
 use App\Models\Stern_type;
+use App\Models\TokenMapping;
 use App\Models\Trading_area;
+use Illuminate\Http\Request;
 use App\Models\Hull_material;
+use Illuminate\Support\Carbon;
 use App\Models\Ship_propulsion;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\DB;
 use App\Models\Certificate_license;
 use App\Models\Ship_classification;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Str;
 
 class PDFCertController extends Controller
 {
+   public function generateQRCode($id)
+{
+    // Generate a unique token for the ID
+   // $token = Str::random(10);
+
+    // Store the mapping between the token and the actual ID in the database
+    // TokenMapping::create([
+    //     'id' => $id,     // The actual ID
+    //     'token' => $token, // The generated token
+    // ]);
+   // Find the certificate using the ID
+//    $certificate = Certificate_license::find($id);
+//    $certificateid = $certificate->cert_id;
+   
+   // Construct the URL with the ID
+   $urlWithId = "https://bmarina.bangsamoro.gov.ph/view-detail/{$id}";
+
+   // Generate the QR code with the URL including the ID
+   $qrCode = QrCode::size(50)->generate($urlWithId);
+
+   // Save the QR code image to a temporary location
+   $tempImagePath = public_path("img/qr_code.png");
+   file_put_contents($tempImagePath, $qrCode);
+
+   return $tempImagePath;
+}
+
     public function generatePdf(Request $request)
     {
+      
+        
         $certificate = Certificate_license::find($request['id']);
         $certificate_id = $certificate->cert_id;
+        $qr_code = $certificate->qr_code;
+        // $token = "ajkdshak";
         $certificate_type = $certificate->cert_type_id;
+        
+        // Generate the QR code and get its file path
+        $tempImagePath = $this->generateQRCode($qr_code);
 
         $amount = $certificate->amount;
         $or_number = $certificate->or_no;
@@ -45,7 +82,7 @@ class PDFCertController extends Controller
         $date_issued = $issue->format('jS F Y');
         //mm dd, yy
         $date_issue = $issue->format('M d, Y');
-        $valid_date = $validity->format('M d, Y');
+        $valid_date = $validity->format('F d, Y');
         
 
        //DETAILS
@@ -151,6 +188,49 @@ class PDFCertController extends Controller
             //$file = 'certificate/certificate-11Minimun';
             return redirect('co_cpr');
         }
+        if ($certificate_type == 12) {
+            $file = 'certificate/certificate-12ChangeEngine';
+        }
+        if ($certificate_type == 13) {
+            $file = 'certificate/certificate-13ChangeVesselName';
+        }
+        if ($certificate_type == 14) {
+            $file = 'certificate/certificate-14Inspection';
+        }
+        if ($certificate_type == 15) {
+            $file = 'certificate/certificate-15PublicConvience';
+        }
+        if ($certificate_type == 16) {
+            $file = 'certificate/certificate-16Stability';
+        }
+        if ($certificate_type == 17) {
+            $file = 'certificate/certificate-17RollBack';
+        }
+        if ($certificate_type == 18) {
+            $file = 'certificate/certificate-18ChangeHomePort';
+        }
+        if ($certificate_type == 19) {
+            $file = 'certificate/certificate-19Compliance';
+        }
+        if ($certificate_type == 20) {
+            $file = 'certificate/certificate-20PublicConvience';
+        }
+        if ($certificate_type == 21) {
+            $file = 'certificate/certificate-21FVSC';
+        }
+        if ($certificate_type == 22) {
+            $file = 'certificate/certificate-22MotorboutLicense';
+        }
+        if ($certificate_type == 23) {
+            $file = 'certificate/certificate-23ORDER';
+        }
+        if ($certificate_type == 24) {
+            $file = 'certificate/certificate-24Passenger';
+        }
+        if ($certificate_type == 25) {
+            $file = 'certificate/certificate-25PleasureYachtLicense';
+        }
+        
         $pdf = Pdf::loadView($file, compact('Details'), [
             'certificate' => $certificate,
             'amount' => $amount,
@@ -173,7 +253,8 @@ class PDFCertController extends Controller
             'date_issue' => $date_issue,
             'valid_date' => $valid_date,
             'date_validity' => $date_validity,
+            'qrCodeImagePath' => $tempImagePath,
         ])->setPaper('legal');
-        return $pdf->download();
+        return $pdf->stream('pdf_with_qr_code.pdf');
     }
 }

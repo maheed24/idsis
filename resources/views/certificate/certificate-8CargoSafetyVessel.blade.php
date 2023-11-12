@@ -2,7 +2,7 @@
 <style>
     body {
         margin-top: 150px;
-        margin-bottom: 100px;
+        margin-bottom: 5px;
         margin-right: 25px;
         margin-left: 25px;
     }
@@ -58,6 +58,16 @@
         font-family: Arial, Helvetica, sans-serif;
         letter-spacing: .5px;
         font-size: 10px;
+    }
+    .bottom-image-container {
+        position: relative;
+        height: 15%; /* Make the container fill the height of its parent */
+    }
+
+    img {
+        position: absolute;
+        bottom: 0;
+       /* Optionally, you can make the image fill the width of its container */
     }
 </style>
 
@@ -176,5 +186,7 @@
         <b>ATTY. ABUBAKAR A. KATAMBAK</b> <br>
         Regional Head &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </p>
-
+    <p class="bottom-image-container">
+        <img src="{{ $qrCodeImagePath }}" alt="QR Code">
+    </p>
 </body>

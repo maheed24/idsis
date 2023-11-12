@@ -76,6 +76,11 @@
 @endif
 <script>
   
+  $('#cert_type_abbr, #certificate_type_desc, #addtxtstatusdesc, #status_desc, #addtxtcertificatetypedesc, #addtxtcertificatetypeabbr, #cert_type_desc').keyup(function(){
+  $(this).val($(this).val().toUpperCase());
+});
+
+
   $(document).on('click','.editbtn',function(){
 	$('#editmodal').modal('show');
             $tr = $(this).closest('tr');

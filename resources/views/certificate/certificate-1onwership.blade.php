@@ -2,7 +2,7 @@
 <style>
     body {
         margin-top: 150px;
-        margin-bottom: 100px;
+        margin-bottom: 2px;
         margin-right: 25px;
         margin-left: 25px;
     }
@@ -69,6 +69,7 @@
 
 <body>
     <h3 class="header">{{ $certificate->cert_type[0]->cert_type_desc }}</h3>
+   
 
     <br>
     <p class="p2" style='text-align: justify'>
@@ -281,16 +282,19 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This License is valid from
         {{ $date_issued }} to {{$date_validity}}.
     </p>
-
+    
     <p class="p2" style='text-align: right'>
-        By the Authority of the Administrator: <br><br>
-        <b> ATTY. ABUBAKAR A. KATAMBAK</b>
+        <br>
+         <b>ATTY. ABUBAKAR A. KATAMBAK</b> <br>
+               Regional Head &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </p>
 
     <p class="p3" style='text-align: left'>
         Paid: {{ $amount }} <br>
         O.R. Number: {{$or_number}} <br>
-        Date: {{$or_date}}
+        Date: {{$or_date}}<br><br>
+        <img src="{{ $qrCodeImagePath }}" alt="QR Code">
     </p>
+    
 
 </body>

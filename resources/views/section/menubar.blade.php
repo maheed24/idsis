@@ -22,6 +22,7 @@
 		<ul class="sidebar-menu" data-widget="tree" style="font-weight:normal!important;">
 			<li class="header">MANAGE</li>
 			@can('admin')
+			<li><a href="{{ url('dashboard')}}"><i class="fas fa-solid fa-registered"></i><span style="margin-left:10px;">DashBoard</span></a></li>
 			<li><a href="{{ url('co_cpr')}}"><i class="fas fa-solid fa-registered"></i><span style="margin-left:10px;">CO/CPR/LICENSE</span></a></li>
 			<li><a href="{{ url('change_homeport')}}"><i class="fas fa-solid fa-registered"></i><span style="margin-left:10px;">CHANGE HOMEPORT</span></a></li>
 			@endcan
@@ -44,6 +45,7 @@
 							<li><a href="{{ url('/Operation') }}"><i class="fas fa-paste"></i><span style="margin-left:10px;">OPERATION</span></a></li>
 			@endcan
 			@can('user')
+							<li><a href="{{ url('dashboard')}}"><i class="fas fa-solid fa-registered"></i><span style="margin-left:10px;">DashBoard</span></a></li>
 							<li><a href="{{ url('co_cpr')}}"><i class="fas fa-solid fa-registered"></i><span style="margin-left:10px;">CO/CPR/LICENSE</span></a></li>
 							<li><a href="{{ url('change_homeport')}}"><i class="fas fa-solid fa-registered"></i><span style="margin-left:10px;">CHANGE HOMEPORT</span></a></li>
 			@endcan

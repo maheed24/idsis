@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout title="Your Custom Title">
 
     <x-authentication-card>
         <x-slot name="logo">

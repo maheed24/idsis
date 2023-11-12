@@ -171,5 +171,6 @@ Oct 10, 2024.
         <b>ATTY. ABUBAKAR A. KATAMBAK</b> <br>
                Regional Head &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </p>
-
+    <p style='text-align: bottom'>
+        <img src="{{ $qrCodeImagePath }}" alt="QR Code"></p>
 </body>

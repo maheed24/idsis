@@ -22,7 +22,7 @@ class Certificate_license extends Model
         return $this->hasMany('App\Models\Cert_type','id','cert_type_id');
     }
     public function User(){
-        return $this->hasMany('App\Models\User','id','user_id');
+        return $this->belongsTo(User::class);
     }
     public function Detail(){
         return $this->belongsTo(Detail::class);

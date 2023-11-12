@@ -2,7 +2,7 @@
 <style>
     body {
         margin-top: 150px;
-        margin-bottom: 100px;
+        margin-bottom: 5px;
         margin-right: 25px;
         margin-left: 25px;
     }
@@ -237,13 +237,16 @@
     </p>
 
     <p class="p2" style='text-align: right'>
-        By the Authority of the Administrator:
+        <br>
+         <b>ATTY. ABUBAKAR A. KATAMBAK</b> <br>
+               Regional Head &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </p>
     <br><br><br>
     <p class="p3" style='text-align: left'>
         Paid: {{ $amount }} <br>
         O.R. Number: {{$or_number}} <br>
-        Date: {{$or_date}}
+        Date: {{$or_date}}<br><br>
+        <img src="{{ $qrCodeImagePath }}" alt="QR Code">
     </p>
 
 </body>

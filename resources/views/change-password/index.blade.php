@@ -18,7 +18,7 @@
 					</div>
 					<div class="box-body">
 						<div >
-                            {{-- {{}} --}}
+                            
 							<form method="POST" action="{{route('update-password-yow',auth()->user()->id)}}">
                                 @csrf
         

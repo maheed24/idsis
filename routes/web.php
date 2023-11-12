@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ViewController;
 use App\Http\Controllers\ResetController;
 use App\Http\Controllers\CO_CPRController;
 use App\Http\Controllers\OfficeController;
@@ -50,7 +51,7 @@ use App\Http\Controllers\Ship_classification_typeController;
 //     return view('welcome');
 // });
 Route::redirect('/', 'login');
-
+Route::get('/view-detail/{token}', [ViewController::class, 'show']);
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

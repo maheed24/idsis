@@ -2,7 +2,7 @@
 <style>
     body {
         margin-top: 150px;
-        margin-bottom: 100px;
+        margin-bottom: 5px;
         margin-right: 25px;
         margin-left: 25px;
     }
@@ -67,6 +67,17 @@
         letter-spacing: .5px;
         font-size: 10px;
     }
+    .bottom-image-container {
+        position: relative;
+        height: 15%; /* Make the container fill the height of its parent */
+    }
+
+    img {
+        position: absolute;
+        bottom: 0;
+       /* Optionally, you can make the image fill the width of its container */
+    }
+  
 </style>
 
 <body>
@@ -196,10 +207,13 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This permit will remain in force until <b>{{$valid_date}}</b>.
         </p>
         <br><br><br>
+        <br><br><br>
         <p class="p2" style='text-align: right'>
             <b>ATTY. ABUBAKAR A. KATAMBAK</b> <br>
             Regional Head &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </p>
-        
+        <div class="bottom-image-container">
+            <img src="{{ $qrCodeImagePath }}" alt="QR Code">
+        </div>
     </body>
     

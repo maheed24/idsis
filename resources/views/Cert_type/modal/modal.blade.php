@@ -36,7 +36,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group" style="padding-left:20px!important;padding-right:20px!important;">
                                     <label>Certificate Abbr</label>
-                                    <input type="text" class="form-control clear" name="cert_type_abbr" id="addtxtcertificatetypeabbr" style="width:100%!important;" required />
+                                    <input type="text" class="form-control clear" name="cert_type_abbr" id="cert_type_abbr" style="width:100%!important;" required />
                                 </div>
                             </div>
                             <div class="col-sm-6">

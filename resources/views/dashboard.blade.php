@@ -11,19 +11,8 @@
 			<!-- Main content -->
 			<section class="content">
 				<!-- Default box -->
-				<div class="box" style="display:none;">
-					<div class="box-header with-border">
-						<h4><b>Dashboard</b></h4>
-						
-					</div>
-					<div class="box-body">
-						<div id="container_cert_type">
-							
-						</div>
-						
-					</div>
-					<!-- /.box-body -->
-				</div>
+				@livewire('dashboard')
+				@livewire('search-component')
 				<div id="divLoading" class="container"><img id="loading" height="150" src="{{ asset('public/images/loading_vessel.gif')}}"></div>
 				<!-- /.box -->
 			</section>

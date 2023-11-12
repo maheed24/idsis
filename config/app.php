@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'BMARINA'),
 
     /*
     |--------------------------------------------------------------------------
@@ -171,6 +171,7 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
+        SimpleSoftWareIO\QrCode\QrCodeServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -187,6 +188,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
+        'QrCode' => SimpleSoftWareIO\QrCode\Facades\QrCode::class,
     ])->toArray(),
 
 ];

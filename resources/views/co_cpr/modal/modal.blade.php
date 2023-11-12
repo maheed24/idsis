@@ -63,6 +63,7 @@
                                                 <label>Principal Name<span style="color:red;">*</span></label>
                                                 <input type="text" class="form-control clear" name="principal_name" id="addtxtprincipalname" style="width:100%!important;" required />
                                                 <input type="hidden" name="change_homeport" value="0">
+                                                
                                                 <input type="hidden" class="form-control clear" name="user_id" id="addtxtprincipalname" style="width:100%!important;" readonly value = "{{$User[0]->id}}" />
                                             </div>
                                         </div>
@@ -729,7 +730,7 @@
             
             {!! csrf_field() !!}
             
-                <input type="hidden" class="form-control" name="details_id" id="detail_id" style="background:#cecece;font-size: 0;width:100%!important;"  />
+                <input type="text" class="form-control" name="details_id" id="detail_id" style="background:#cecece;font-size: 0;width:100%!important;"  />
             <td style="width:14%;"><input type="text" class="form-control" name="engine_make" id="sengine_make" style="width:100%!important;" /></td>
             <td style="width:14%;"><input type="number" class="form-control" step=".01" min="0" name="horsepower" id="shorsepower" style="width:100%!important;" /></td>
             <td style="width:14%;"><input type="text" class="form-control" name="serial_no" id="sserial_no" style="width:100%!important;" /></td>
@@ -756,14 +757,16 @@
                                 {{-- ADD History --}}
                                 <div id="AddCert" style="margin-top:10px;!important;display:none;">	
                                     {!! csrf_field() !!}
+                                
                                     <input type="hidden" class="form-control" name="details_id" id="details_id" style="background:#cecece;font-size: 10;width:100%!important;"  required />
-                                    {{-- <input type="hidden" class="form-control clear" name="action" value="add" style="width:100%!important;" readonly /> --}}
+                                    {{-- <input type="text" class="form-control " name="user_id" value="{{auth()->user()->id}}" style="width:100%!important;" readonly /> --}}
                                     {{-- <input type="text" class="form-control clear" name="details_id" id="addtxtdetailsidpayment" style="width:100%!important;" required /> --}}
                                     <div id="payment_msg"></div>
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <div class="form-group" style="padding-left:20px!important;">
                                                 <label>Amount</label>
+                                                <input type="hidden" class="form-control clear" name="qr_code" id="" style="width:100%!important;" />
                                                 <input type="number" class="form-control clear" step=".01" min="0" name="amount" id="amount" style="width:100%!important;"  required />
                                             </div>
                                         </div>
