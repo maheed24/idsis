@@ -38,10 +38,21 @@
                                                 <td style="width:25%;">{{ $item->company_name }}</td>
                                                 <td style="width:23%;">
                                                     {{ $item->Ship_classification[0]->ship_classification_desc }}</td>
-                                                <td style="width:2%;"><button style="background:#367fa9;"
+                                                <td style="width:2%;">
+                                                    <form action="{{route('view.vessel')}}">
+                                                       
+                                                         <button style="background:#367fa9;" name="id"
+                                                        class="button btn btn-success btn-sm editbtn  btn-flat"
+                                                        value="{{ $item->id }}"><i class="fa fa-eye"
+                                                            style="width:10px;"></i></button>
+                                                    </form>
+                                                   
+                                                    {{-- <button style="background:#367fa9;"
                                                         class="button btn btn-success btn-sm editbtn btn-flat"
                                                         value="{{ $item->id }}"><i class="fa fa-edit"
-                                                            style="width:10px;"></i></button></td>
+                                                            style="width:10px;"></i></button> --}}
+
+                                                        </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -133,34 +144,58 @@
         //     //getRowCert(cert_id, action);
         // });
 
-        //DETAILS GET
-        $(document).on('click', '.editbtn', function(e) {
-            e.preventDefault();
-            var id = $(this).val();
-            $('#editmodal').modal('show');
-            // alert(id);
+      // DETAILS GET
+$(document).on('click', '.editbtn', function(e) {
+    e.preventDefault();
+    var id = $(this).val();
+    $('#editmodal').modal('show');
+    // alert(id);
 
-            $.ajax({
-                type: "GET",
-                url: "/api/edit-detail/" + id,
-                data: {
-                    id: id,
-                },
-                success: function(response) {
-                    if (response.status == 404) {
-                        alert(response.message);
-                        $('#editmodal').modal('hide');
-                    } else {
+    // First AJAX request
+    $.ajax({
+        type: "GET",
+        url: "/api/edit-detail/" + id,
+        data: {
+            id: id,
+        },
+        success: function(response) {
+            if (response.status == 404) {
+                alert(response.message);
+                $('#editmodal').modal('hide');
+            } else {
+                // Handle the response
+                loadCertficateByDetailsId(response);
+                loadShipPropulsion(response);
+            }
+        }
+    });
 
-                        loadCertficateByDetailsId(response);
-                        loadShipPropulsion(response);
-
-
-                    }
-                }
+    // Second AJAX request for loading images
+    $.ajax({
+        url: '/image-load/' + id,
+        type: 'GET',
+        dataType: 'json',
+        success: function(response) {
+            // Handle the response
+            var imagesContainer = $('#images-container');
+            imagesContainer.empty(); // Clear previous content
+            console.log(response);
+            $.each(response.image, function(index, image) {
+                imagesContainer.append('<img src="' + image.path + '" alt="' + image.filename + ' width="150" height="200" ">');
+                //imagesContainer.append('<img src="/img/1.jpg" alt="' + image.filename + '">');
             });
-
-        });
+            // response.forEach(function(image) {
+            //     // Create an <img> element for each image and append it to the container
+            //     imagesContainer.append('<img src="' + image.path + '" alt="' + image.filename + '">');
+            // });
+        },
+        error: function(xhr, status, error) {
+            // Handle errors
+            console.error(xhr.responseText);
+        }
+    });
+});
+    
 
         function loadCertficateByDetailsId(response) {
 
@@ -403,6 +438,7 @@
             $('#id').val(detail.id);
             $('#detail_id').val(detail.id);
             $('#details_id').val(detail.id);
+            $('#detail_id_image').val(detail.id);
             $('#updatetxtprincipalname').val(detail.principal_name);
             $('#updatetxtcompanyname').val(detail.company_name);
             $('#updatetxtbusinessaddress').val(detail.business_address);
@@ -661,6 +697,12 @@
             button.innerHTML = innerHTML;
             return button;
         }
+
+
+
+
+
+
     </script>
     <script>
         $(document).ready(function() {

@@ -64,12 +64,13 @@
         position: relative;
         height: 30%; /* Make the container fill the height of its parent */
     }
+   
 
-    img {
+    /* img {
         position: absolute;
         bottom: 0;
-       /* Optionally, you can make the image fill the width of its container */
-    }
+       
+    } */
 </style>
 
 <body>
@@ -157,11 +158,15 @@ to issued this Certificate
     </p>
   
     <br><br><br>
+    
     <p class="p3" style='text-align: right'>
-        <b>ATTY. ABUBAKAR A. KATAMBAK</b> <br>
-               Regional Head &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        @include('certificate.closing')
     </p>
-    <p class="bottom-image-container">
+    <br><br><br>
+    <p class="p3">
+        Paid: {{ $amount }} <br>
+        O.R. Number: {{ $or_number }} <br>
+        Date: {{ $or_date }}<br><br>
         <img src="{{ $qrCodeImagePath }}" alt="QR Code">
     </p>
 </body>

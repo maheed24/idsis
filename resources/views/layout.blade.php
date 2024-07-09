@@ -31,7 +31,7 @@
   <!-- ADD THE CLASS fixed TO GET A FIXED HEADER AND SIDEBAR LAYOUT -->
   <!-- the fixed layout is not compatible with sidebar-mini -->
 </head>
-<body>
+<body >
 
 
     @yield('content')

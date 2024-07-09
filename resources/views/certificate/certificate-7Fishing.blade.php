@@ -161,19 +161,20 @@
         
     </p>
     <p class="p2" style='text-align: left'>
-        Issued by the Authority of the Government of the Philippines by virtue of EO 435 under my hand and seal at Cotabato City this
+        Issued by the Authority of BARMM Government of the Philippines, under my hand and seal at Cotabato City this
         {{$date_issue}}.
     </p> 
-    <br> <br>
-    <p class="p2" style='text-align: left'>
-        This Certificate is valid until {{$valid_date}}.
-    </p>
-    <br><br><br>
-    <p class="p2" style='text-align: right'>
-        <b>ATTY. ABUBAKAR A. KATAMBAK</b> <br>
-               Regional Head &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </p>
+
+    
     <br><br>
-    <p style='text-align: bottom'>
-    <img src="{{ $qrCodeImagePath }}" alt="QR Code"></p>
+    <p class="p2" style='text-align: right'>
+        @include('certificate.closing')
+    </p>
+    <br>
+    <p class="p3" style='text-align: left'>
+        Paid: {{ $amount }} <br>
+        O.R. Number: {{ $or_number }} <br>
+        Date: {{ $or_date }}<br><br>
+        <img src="{{ $qrCodeImagePath }}" alt="QR Code">
+    </p>
 </body>

@@ -56,7 +56,7 @@
     .p2 {
         font-family: Arial, Helvetica, sans-serif;
         letter-spacing: .5px;
-        line-height: 25px;
+        line-height: 20px;
         font-size: 14px;
     }
 
@@ -69,13 +69,13 @@
 
 <body>
     <h3 class="header">{{ $certificate->cert_type[0]->cert_type_desc }}</h3>
-   
+
 
     <br>
     <p class="p2" style='text-align: justify'>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>THIS IS TO CERTIFY THAT</b>
-        pursuant to Section 10 of Republic Act No. 9295 and Section 12 of
-        Executive Order No. 125-A &nbsp;<u><b class="value">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        pursuant to Section 38, Article XIII of Republic Act No. 11054 and Section 25, Chapter IV Title XV of the
+        Bangsamoro Autonomy Act No. 13 &nbsp;<u><b class="value">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 {{ $Details[0]->ship_name }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></u>
     </p>
     <p class="p2" style='text-align: justify'>having made the required declaration, deposses and says that:</p>
@@ -272,29 +272,28 @@
         </tr>
     </table>
     <p class="p2" style='text-align: justify'>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Issued by the Authority of the
-        Government of the Philippines under my hand and seal at
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Issued by the Authority of BARMM
+        Government of the Philippines, under my hand and seal at
         {{ $office_place }} this {{ $date_issued }}.
 
 
     </p>
     <p class="p2" style='text-align: justify'>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This License is valid from
-        {{ $date_issued }} to {{$date_validity}}.
+        {{ $date_issued }} to {{ $date_validity }}.
     </p>
-    
+
     <p class="p2" style='text-align: right'>
         <br>
-         <b>ATTY. ABUBAKAR A. KATAMBAK</b> <br>
-               Regional Head &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        @include('certificate.closing')
     </p>
 
     <p class="p3" style='text-align: left'>
         Paid: {{ $amount }} <br>
-        O.R. Number: {{$or_number}} <br>
-        Date: {{$or_date}}<br><br>
+        O.R. Number: {{ $or_number }} <br>
+        Date: {{ $or_date }}<br><br>
         <img src="{{ $qrCodeImagePath }}" alt="QR Code">
     </p>
-    
+
 
 </body>

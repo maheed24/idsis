@@ -2,7 +2,7 @@
 <style>
     body {
         margin-top: 150px;
-        margin-bottom: 100px;
+        margin-bottom: 5px;
         margin-right: 25px;
         margin-left: 25px;
     }
@@ -49,7 +49,7 @@
     .p2 {
         font-family: Arial, Helvetica, sans-serif;
         letter-spacing: .5px;
-        line-height: 25px;
+        line-height: 20px;
         font-size: 15px;
     }
 
@@ -57,6 +57,12 @@
         font-family: Arial, Helvetica, sans-serif;
         letter-spacing: .5px;
         font-size: 10px;
+    }
+
+    .bottom-image-container {
+        position: relative;
+        height: 30%;
+        /* Make the container fill the height of its parent */
     }
 </style>
 
@@ -66,10 +72,9 @@
 
 
     <p class="p2" style='text-align: justify'>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Issued by the Maritime Industry
-        Authority (MARINA) pursuant to the provision of
-        Executive Order Nos. 125/125-A and Chapter III, Section 10 of RA 9295 and existing
-        MARINA Memorandum Circular No. 110.
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Issued by BMARINA Regional Office
+        No. 16 pursuant to the provisions of Section 38, Article 13 of the Republic Act 11054 paragraph D of Executive
+        Order No. 435 and Chapter of RA 9295 and existing MARINA Circular No. 110.
     </p>
     <h4 class="header2">VESSEL DATA</h4>
     <table>
@@ -134,10 +139,10 @@
     </table>
 
 
-    <h2 class="header2">COMPANY DATA</h2>
+    <h2 class="header2">OWNER/COMPANY DATA</h2>
     <table>
         <tr>
-            <td>Company Name<br>
+            <td>Name of Owner/Company<br>
                 <center> <b class="value">{{ $Details[0]->company_name }}
                     </b></center>
             </td>
@@ -157,24 +162,27 @@
         thereto.
     </p>
     <p class="p2" style='text-align: justify'>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This License is valid from
-        {{ $date_issued }} to {{$date_validity}}.
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Issued by the Authority of BARMM
+        Government of the Philippines, under my hand and seal at {{ $office_place }} on
+        this <b>{{ $date_issued }}.</b>
     </p>
     <p class="p2" style='text-align: justify'>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Issued at {{$office_place}} on this {{$date_issued}}.
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This License is valid until
+         <b>{{ $date_validity }}</b>.
     </p>
+
     <p class="p2" style='text-align: right'>
         By the Authority of the Administrator:
-    </p> <p class="p2" style='text-align: right'>
+    </p>
+    <p class="p2" style='text-align: right'>
         <br>
-         <b>ATTY. ABUBAKAR A. KATAMBAK</b> <br>
-               Regional Head &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        @include('certificate.closing')
     </p>
     <br><br><br>
     <p class="p3" style='text-align: left'>
         Paid: {{ $amount }} <br>
-        O.R. Number: {{$or_number}} <br>
-        Date: {{$or_date}}<br><br>
+        O.R. Number: {{ $or_number }} <br>
+        Date: {{ $or_date }}<br><br>
         <img src="{{ $qrCodeImagePath }}" alt="QR Code">
     </p>
 

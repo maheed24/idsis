@@ -32,6 +32,7 @@ use App\Http\Controllers\ChangeHomeportController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\Ship_propulsionController;
 use App\Http\Controllers\CityMunicipalityController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ShipClassificationController;
 use App\Http\Controllers\Ship_classification_typeController;
 
@@ -86,6 +87,7 @@ Route::middleware([
     Route::resource('/Rig_type', RigtypeController::class)->middleware('can:super-admin');
     Route::resource('/Operation', OperationController::class)->middleware('can:super-admin');
     Route::resource('/co_cpr', CO_CPRController::class);
+    Route::get('/view-vessel', [CO_CPRController::class, 'viewVessel'])->name('view.vessel');
     Route::resource('/change_homeport', ChangeHomeportController::class)->middleware('can:user');
     // Route::get('/edit-detail/{id}', [CO_CPRController::class, 'edit']);
     Route::resource('/profiles', ProfileController::class)->middleware('can:user');
@@ -123,6 +125,9 @@ Route::middleware([
 
     Route::resource('/Ship_propulsion', Ship_propulsionController::class);
     Route::get('/show', [Ship_propulsionController::class, 'index']);
+    Route::get('/image-load/{id}', [CO_CPRController::class, 'imageLoad'])->name('image-load');
+    Route::post('/image-update', [CO_CPRController::class, 'imageUpdate'])->name('image-update');
+    //Route::resource('/image', ImageController::class);
     //Route::get('/co_cpr/{Ship_propulsion}', [CO_CPRController::class, 'add']);
 
     // Route::get('posts/{post}', [ProvinceController::class, 'show'])->name('posts.show');

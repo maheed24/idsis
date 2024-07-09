@@ -53,7 +53,7 @@
                         </ul>
                         <div class="tab-content clearfix">
                             <div class="tab-pane active" id="transaction_details">
-                                <form id="AddFormVessels" action="{{url('co_cpr')}}" class="form-horizontal" method="POST"  style="margin-top:10px;!important">
+                                <form id="AddFormVessels" action="{{url('co_cpr')}}" class="form-horizontal" method="POST"  style="margin-top:10px;!important" enctype="multipart/form-data">
                                     {!! csrf_field() !!}
                                     {{-- <input type="hidden" class="form-control clear" name="action" value="add" style="width:100%!important;" required /> --}}
                                     <div id="add_co_cpr_msg"></div>
@@ -117,7 +117,7 @@
                                         <div class="col-sm-3">
                                             <div class="form-group" style="padding-left:20px!important;">
                                                 <label>Ship Type<span style="color:red;">*</span></label>
-                                                <select class="form-control select2" name="ship_type_id" id="addddlshiptypedetailsid" style="width:100%;" required>
+                                                <select class="form-control select2" name="ship_type_id" id="addddlshiptypedetailsid1" style="width:100%;" required>
                                                     <option value="" selected="selected" disabled>PLEASE SELECT</option>
                                                     @foreach($Ship_type as $item)
                                                     <option value="{{$item->id}}">{{$item->ship_type_desc}}</option>
@@ -348,6 +348,13 @@
                                                 <input type="text" class="form-control clear" name="body_no" id="addtxtbodyno" style="width:100%!important;" />
                                             </div>
                                         </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group" style="padding-left:20px!important;">
+                                                <label>Pictures<span style="color:red;">* Upload size only 5MB</span></label>
+                                                <input type="file" class="form-control" name="images[]" style="width:100%!important;" multiple />
+                                               
+                                            </div>
+                                        </div>
                                         <div class="hidden">
                                             <div class="form-group" style="padding-left:20px!important;padding-right:20px!important;">
                                                 <label>Status</label>
@@ -388,6 +395,7 @@
                             <li><a href="#documentary_requirements" data-toggle="tab">SHIP PROPULSION</a></li>
                             <li><a href="#history" data-toggle="tab">HISTORY</a></li>
                             <li><a href="#homeport" data-toggle="tab">CHANGE HOMEPORT</a></li>
+                            <li><a href="#image" data-toggle="tab">VESSEL IMAGE</a></li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="vessel_details">
@@ -663,7 +671,7 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-3">
-                                            <div class="form-group" style="padding-left:20px!important;padding-right:20px!important;">
+                                            <div class="form-group adjust-right" style="padding-left:20px!important;padding-right:20px!important;">
                                                 <label>Acquisition Type<span style="color:red;">*</span></label>
                                                 <select class="form-control select2" name="acquisition_type_id" id="updateddlacquisitiontypeid" style="width:100%;">
                                                     <option value="" selected="selected" disabled>PLEASE SELECT</option>
@@ -969,6 +977,31 @@
                                         <button type="submit" class="btn btn-primary btn-flat" id="btnAddChangeHomeport"><i class="fa fa-save"></i> <b>SAVE</b></button>
                                     </div>
                                 </form>
+                            </div>
+                            <div class="tab-pane" id="image">
+                                <div class="col-sm-3">
+                                    <form id="" action="{{route('image-update')}}" class="form-horizontal" method="POST"  style="margin-top:10px;!important" enctype="multipart/form-data">
+                                        @csrf
+                                       
+                                    <div class="form-group" style="padding-left:20px!important;">
+                                        <label>Pictures<span style="color:red;">* Upload size only 5MB</span></label>
+                                        <input type="hidden" id="detail_id_image" name="detail_id">
+                                        <input type="file" class="form-control" name="images[]" style="width:100%!important;" multiple />
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-flat" id=""><i class="fa fa-upload"></i> <b>UPLOAD</b></button>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                   
+                                </div>
+                                <br>
+                                <br>
+                                <div id="images-container">
+                                   
+                                    {{-- Image Here  --}}
+                               
+                                </div>
+                                
                             </div>
                         </div>
                     </div>

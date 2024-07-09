@@ -63,6 +63,7 @@ class PDFCertController extends Controller
         $qr_code = $certificate->qr_code;
         // $token = "ajkdshak";
         $certificate_type = $certificate->cert_type_id;
+       
         
         // Generate the QR code and get its file path
         $tempImagePath = $this->generateQRCode($qr_code);
@@ -73,7 +74,10 @@ class PDFCertController extends Controller
         $or_dates = $or_date->format('jS F Y');
 
         $license_no = $certificate->cert_no;
-        $cert_name = Cert_type::whereIn('id', [$certificate_type]);
+        $cert_type = Cert_type::whereIn('id', [$certificate_type])->get();
+        $abbr = $cert_type[0]->cert_type_abbr;
+        $cert_name = $cert_type[0]->cert_type_desc;
+        
 
         //DATE FORMAT CONVERTION
         $issue = Carbon::parse($certificate->date_issued);
@@ -81,7 +85,7 @@ class PDFCertController extends Controller
         $date_validity = $validity->format('jS F Y');
         $date_issued = $issue->format('jS F Y');
         //mm dd, yy
-        $date_issue = $issue->format('M d, Y');
+        $date_issue = $issue->format('F d, Y');
         $valid_date = $validity->format('F d, Y');
         
 
@@ -255,6 +259,6 @@ class PDFCertController extends Controller
             'date_validity' => $date_validity,
             'qrCodeImagePath' => $tempImagePath,
         ])->setPaper('legal');
-        return $pdf->stream('pdf_with_qr_code.pdf');
+        return $pdf->stream( $cert_name.' ('.$abbr.')'.'.pdf');
     }
 }

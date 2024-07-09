@@ -1,7 +1,7 @@
 <title>{{ $certificate->cert_type[0]->cert_type_desc }}</title>
 <style>
     body {
-        margin-top: 150px;
+        margin-top: 100px;
         margin-bottom: 100px;
         margin-right: 25px;
         margin-left: 25px;
@@ -49,7 +49,7 @@
     .p2 {
         font-family: Arial, Helvetica, sans-serif;
         letter-spacing: .5px;
-        line-height: 25px;
+        line-height: 20px;
         font-size: 15px;
     }
 
@@ -66,10 +66,10 @@
 
 
     <p class="p2" style='text-align: justify'>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Issued by the Maritime Industry
-        Authority (MARINA) pursuant to the provision of
-        Executive Order Nos. 125/125-A and Chapter III, Section 10 of RA 9295 and existing
-        MARINA Memorandum Circular No. 110.
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Issued by BMARINA Regional Office
+        No.16 pursuant to the
+        provision of Section 38, Article 13 of the Republic Act 11054, Executive Order No. 125/125-A and Chapter III of
+        RA 9295 and existing MARINA Circluar No. 110
     </p>
     <h4 class="header2">VESSEL DATA</h4>
     <table>
@@ -137,7 +137,7 @@
     <h2 class="header2">COMPANY DATA</h2>
     <table>
         <tr>
-            <td>Company Name<br>
+            <td>Name of the Owner/Company Name<br>
                 <center> <b class="value">{{ $Details[0]->company_name }}
                     </b></center>
             </td>
@@ -157,25 +157,26 @@
         thereto.
     </p>
     <p class="p2" style='text-align: justify'>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This License is valid from
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Issued by the Authority of BARMM
+        Government of the Philippines, under my hand and seal at {{ $office_place }} this 
         {{ $date_issued }} to {{ $date_validity }}.
     </p>
     <p class="p2" style='text-align: justify'>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Issued at {{ $office_place }} on
-        this {{ $date_issued }}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This license is valid until
+        {{ $date_validity }}
     </p>
+    <br>
     <p class="p2" style='text-align: right'>
         <br>
-         <b>ATTY. ABUBAKAR A. KATAMBAK</b> <br>
-               Regional Head &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        @include('certificate.closing')
     </p>
-    <br><br><br>
+    <br><br>
     <p class="p3" style='text-align: left'>
         Paid: {{ $amount }} <br>
-        O.R. Number: {{$or_number}} <br>
-        Date: {{$or_date}}<br><br>
+        O.R. Number: {{ $or_number }} <br>
+        Date: {{ $or_date }}<br><br>
         <img src="{{ $qrCodeImagePath }}" alt="QR Code">
-        
+
     </p>
 
 </body>

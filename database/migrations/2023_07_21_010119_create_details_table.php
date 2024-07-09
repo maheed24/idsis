@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('details', function (Blueprint $table) {
             $table->id();
+            $table->string('token')->nullable();
             $table->string('principal_name')->nullable();
             $table->string('company_name');
             $table->string('business_address');
@@ -51,6 +52,7 @@ return new class extends Migration
             $table->string('homeport')->nullable();
             $table->foreignId('acquisition_type_id')->nullable();
             $table->string('change_homeport')->nullable();
+            $table->foreignId('image_id')->nullable();
             $table->string('status_id')->nullable();
             $table->timestamps();
         });

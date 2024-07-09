@@ -5,6 +5,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Ship_propulsion;
 use App\Models\Certificate_license;
+use App\Models\Image;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -48,7 +49,6 @@ Route::get('/edit-detail/{id}', function(Request $request){
     //     ]);
     // }
 });
-
 
 Route::get('/edit-certificate/{id}', function(Request $request){
 

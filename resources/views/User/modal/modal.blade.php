@@ -208,7 +208,7 @@
                     </div>
                     <div class="modal-footer atap">
                         <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"> <b>CLOSE</b></button>
-                        <button type="submit" class="btn btn-primary btn-flat" id="btnUpdateChangeHomeport"><i class="fa fa-check"></i> <b>Confirm</b></button>
+                        <button type="submit" class="btn btn-info btn-flat" id="btnUpdateChangeHomeport"><i class="fa fa-check"></i> <b>Confirm</b></button>
                     </div>
                 </form>
             </div>

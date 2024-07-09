@@ -52,6 +52,8 @@ class Detail extends Model
         return $this->hasMany(Certificate_license::class, 'details_id', 'id');
     }
     
-
+    public function image(){
+        return $this->hasMany('App\Models\Image','id','image_id');
+    }
 
 }

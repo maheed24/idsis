@@ -59,15 +59,17 @@
         letter-spacing: .5px;
         font-size: 10px;
     }
+
     .bottom-image-container {
         position: relative;
-        height: 15%; /* Make the container fill the height of its parent */
+        height: 15%;
+        /* Make the container fill the height of its parent */
     }
 
     img {
         position: absolute;
         bottom: 0;
-       /* Optionally, you can make the image fill the width of its container */
+        /* Optionally, you can make the image fill the width of its container */
     }
 </style>
 
@@ -78,9 +80,9 @@
     <br>
     <br>
     <p class="p2" style='text-align: justify'>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Issued by the Maritime Industry
-        Issued under the provisions of the PHILIPPINE MERCHANT MARINE RULES AND REGULATIONS (PMMRR)
-        1997 and its subsequent amendments, and the relevant International Maritime Convention relating thereto.
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Issued under the provisions of the
+        PHILIPPINE MERCHANT MARINE RULES AND REGULATIONS (PMMRR) 1997 and its subsequent amendments, and the relevant
+        international maritime convention relating thereto.
     </p>
     <h5 class="header2">Information of Ship:</h5>
 
@@ -170,21 +172,21 @@
     </p>
     <p class="p2" style='text-align: justify'>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This Certificate is valid until
-        {{$valid_date}} subject to the annual inspections in accordance with the requirements of the Regulation
+        {{ $valid_date }} subject to the annual inspections in accordance with the requirements of the Regulation
         11/2 of the PMMRR, 1997 and its subsequent amendments, and the relevant international maritime conventions.
 
 
     </p>
     <p class="p2" style='text-align: left'>
-        Issued by the Authority of the Government of the Republic of the Philippines under my hand and seal at {{$office_place}} this,
-        {{$date_issue}}.
+        Issued by the Authority of BARMM Government of the Republic of the Philippines under my hand and seal at
+        {{ $office_place }} this,
+        {{ $date_issue }}.
 
     </p>
 
     <br><br><br>
     <p class="p2" style='text-align: right'>
-        <b>ATTY. ABUBAKAR A. KATAMBAK</b> <br>
-        Regional Head &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        @include('certificate.closing')
     </p>
     <p class="bottom-image-container">
         <img src="{{ $qrCodeImagePath }}" alt="QR Code">

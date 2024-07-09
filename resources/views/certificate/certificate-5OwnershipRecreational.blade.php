@@ -174,9 +174,8 @@
     
     <p class="p2" style='text-align: right'>
         <br>
-         <b>ATTY. ABUBAKAR A. KATAMBAK</b> <br>
-               Regional Head &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </p>
+        @include('certificate.closing')
+        </p>
     <br><br><br>
     <p class="p3" style='text-align: left'>
         Paid: {{ $amount }} <br>
