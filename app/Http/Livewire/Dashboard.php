@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Detail;
 use Livewire\Component;
 use App\Models\Certificate_license;
+use App\Models\Ship_classification;
 
 class Dashboard extends Component
 {
@@ -15,6 +16,7 @@ class Dashboard extends Component
     public $shipTypePercentage;
     public $totalPassenger;
     public $totalVessel;
+    public $shipClassification;
     
     public function render()
     {
@@ -43,6 +45,8 @@ class Dashboard extends Component
        //$vessel = $Detail->sum('ship_name');
        $vessel = $Detail->count();
        $this->totalVessel = $vessel;
+
+       $this->shipClassification = Ship_classification::all();
 
        return view('livewire.dashboard');
     }

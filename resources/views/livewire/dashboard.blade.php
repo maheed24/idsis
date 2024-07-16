@@ -29,20 +29,8 @@
 							  </div>
 							</div>
 							<!-- ./col -->
-							<div class="col-lg-3 col-6">
-							  <!-- small box -->
-							  <div class="small-box bg-success">
-								<div class="inner">
-								  <h3>53<sup style="font-size: 20px">%</sup></h3>
-				  
-								  <p>Ship Type</p>
-								</div>
-								<div class="icon">
-								  <i class="ion-document-text"></i>
-								</div>
-								<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-							  </div>
-							</div>
+							
+							
 							<!-- ./col -->
 							<div class="col-lg-3 col-6">
 							  <!-- small box -->
@@ -75,7 +63,33 @@
 							</div>
 							<!-- ./col -->
 						  </div>
+						 
 						
 					</div>
 					<!-- /.box-body -->
+					<hr>
+					<div class="box-header with-border">
+						<h4><b>Ship Type</b></h4>
+						
+					</div>
+					<div class="box-body">
+					<div class="row">
+						@foreach ($shipClassification as $item)
+						<div class="col-lg-3 col-6">
+						  <!-- small box -->
+						  <div class="small-box bg-default">
+							<div class="inner">
+							  <h3>{{\App\Models\Detail::where('ship_classification_id',$item->id)->count()}}<sup style="font-size: 20px"></sup></h3>
+			  
+							  <p>{{$item->ship_classification_desc}}</p>
+							</div>
+							<div class="icon">
+							  <i class="ion-android-boat"></i>
+							</div>
+							<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+						  </div>
+						</div>
+						@endforeach
+					  </div>
+					</div>
 				</div>
